@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "EventType": {
+      "type" : "object",
+      "properties" : {
+        "dataSchema": {
+          "$ref": "#/definitions/SchemaRef"
+        },
+        "graphSchema": {
+          "$ref": "#/definitions/SchemaRef"
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Description of the event"
+        },
+        "entity" : {
+          "type" : "string",
+          "description" : "The entity for which the event is generated"
+        },
+        "group": {
+          "type" : "string",
+          "description" : "Whether the entity is primary, administrative, or cross-primary.",
+          "enum": [
+            "primary",
+            "admin",
+            "cross"
+          ]
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the event"
+        }
+      }
+    },
+    "EventTypesList": {
+      "type" : "object",
+      "properties" : {
+        "types" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/EventType"
+          }
+        }
+      }
+    },
+    "SchemaRef": {
+      "type": "object",
+      "properties": {
+        "packageName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

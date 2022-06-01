@@ -1,0 +1,53 @@
+{
+  "schemaName" : "gw.events.effdate.v1.bulk_write-1.0",
+  "mappers" : {
+    "BranchCopied" : {
+      "schemaDefinition" : "BranchCopied",
+      "root" : "gw.events.effdate.BranchCopiedEventInfo",
+      "properties" : {
+        "source" : {
+          "path" : "BranchCopiedEventInfo.SourceBranch.PublicID"
+        },
+        "target" : {
+          "path" : "BranchCopiedEventInfo.TargetBranch.PublicID"
+        },
+        "start" : {
+          "path" : "BranchCopiedEventInfo.NewPeriodStart"
+        },
+        "end" : {
+          "path" : "BranchCopiedEventInfo.NewPeriodEnd"
+        }
+      }
+    },
+    "PeriodChanged" : {
+      "schemaDefinition" : "PeriodChanged",
+      "root" : "gw.events.effdate.PeriodChangedEventInfo",
+      "properties" : {
+        "branch" : {
+          "path" : "PeriodChangedEventInfo.SourceBranch.PublicID"
+        },
+        "start" : {
+          "path" : "PeriodChangedEventInfo.NewPeriodStart"
+        },
+        "end" : {
+          "path" : "PeriodChangedEventInfo.NewPeriodEnd"
+        }
+      }
+    },
+    "SliceCopied" : {
+      "schemaDefinition" : "SliceCopied",
+      "root" : "gw.events.effdate.SliceCopiedEventInfo",
+      "properties" : {
+        "source" : {
+          "path" : "SliceCopiedEventInfo.SourceBranch.PublicID"
+        },
+        "target" : {
+          "path" : "SliceCopiedEventInfo.TargetBranch.PublicID"
+        },
+        "date" : {
+          "path" : "SliceCopiedEventInfo.SliceCopyDate"
+        }
+      }
+    }
+  }
+}

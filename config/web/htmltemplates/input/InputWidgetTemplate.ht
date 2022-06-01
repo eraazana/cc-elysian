@@ -1,0 +1,6 @@
+<div id="${inputLabelAriaId}" class="gw-label ${labelClasses} ${!label ? 'gw-emptyLabel'}"
+     role="${labelIsHeading ? 'heading'}" aria-level="${labelIsHeading ? labelHeadingLevel}"
+     style="?{labelWidth}width:${labelWidth}">${labelIcon}${label}</div>
+<div class="gw-value ${valueClasses}" style="${valueStyleBuilder}">
+${:children}
+</div>

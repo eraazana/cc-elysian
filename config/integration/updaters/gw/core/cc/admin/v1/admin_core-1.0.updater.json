@@ -1,0 +1,78 @@
+{
+  "schemaName": "gw.core.cc.admin.v1.admin_core-1.0",
+  "combine": [
+    "gw.core.cc.common.v1.common_core-1.0",
+    "gw.core.pl.admin.v1.admin_pl-1.0"
+  ],
+  "updaters": {
+    "AuthorityLimit": {
+      "schemaDefinition": "AuthorityLimit",
+      "root": "entity.AuthorityLimit",
+      "properties": {
+        "costType": {
+          "path": "AuthorityLimit.CostType",
+          "valueResolver": {
+            "typeName": "TypeKeyValueResolver"
+          }
+        },
+        "coverageType": {
+          "path": "AuthorityLimit.CoverageType",
+          "valueResolver": {
+            "typeName": "TypeKeyValueResolver"
+          }
+        },
+        "limitAmount": {
+          "path": "AuthorityLimit.LimitAmount",
+          "valueResolver": {
+            "typeName": "CurrencyAmountValueResolver"
+          }
+        },
+        "limitType": {
+          "path": "AuthorityLimit.LimitType",
+          "valueResolver": {
+            "typeName": "TypeKeyValueResolver"
+          }
+        },
+        "policyType": {
+          "path": "AuthorityLimit.PolicyType",
+          "valueResolver": {
+            "typeName": "TypeKeyValueResolver"
+          }
+        }
+      }
+    },
+    "AuthorityLimitProfile": {
+      "schemaDefinition": "AuthorityLimitProfile",
+      "root": "entity.AuthorityLimitProfile",
+      "properties": {
+        "currency": {
+          "path": "AuthorityLimitProfile.Currency",
+          "valueResolver": {
+            "typeName": "TypeKeyValueResolver"
+          }
+        },
+        "custom": {
+          "path": "AuthorityLimitProfile.Custom"
+        },
+        "description": {
+          "path": "AuthorityLimitProfile.Description"
+        },
+        "name": {
+          "path": "AuthorityLimitProfile.Name"
+        }
+      }
+    },
+    "User": {
+      "schemaDefinition": "User",
+      "root": "entity.User",
+      "properties": {
+        "authorityLimitProfile": {
+          "path": "User.AuthorityProfile",
+          "valueResolver": {
+            "typeName": "gw.rest.core.cc.admin.v1.authoritylimitprofile.AuthorityLimitProfileJsonValueResolver"
+          }
+        }
+      }
+    }
+  }
+}

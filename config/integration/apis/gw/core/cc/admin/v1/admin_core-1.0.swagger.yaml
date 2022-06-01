@@ -1,0 +1,290 @@
+swagger: "2.0"
+consumes:
+- application/json
+produces:
+- application/json
+x-gw-combine:
+- gw.core.pl.admin.v1.admin_pl-1.0
+- gw.core.cc.framework.v1.framework_core-1.0
+x-gw-schema-import:
+  admin: gw.core.cc.admin.v1.admin_core-1.0
+paths:
+  /authority-limit-profiles:
+    get:
+      summary: "Retrieve a list of authority limit profiles"
+      description: "Retrieve a list of authority limit profiles"
+      operationId: getAuthorityLimitProfiles
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: AuthorityLimitProfile
+        operationType: get-collection
+        resourceType: AuthorityLimitProfiles
+      x-gw-parameter-sets:
+      - get-collection
+      responses:
+        "200":
+          description: "Successfully returned a list of authority limit profiles"
+          schema:
+            $ref: "#/definitions/AuthorityLimitProfileList"
+    post:
+      summary: "Create an authority limit profile"
+      description: "Create an authority limit profile"
+      operationId: createAuthorityLimitProfile
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: AuthorityLimitProfile
+        operationType: post-collection
+        resourceType: AuthorityLimitProfiles
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/AuthorityLimitProfileRequest"
+      x-gw-parameter-sets:
+      - post-collection
+      responses:
+        "201":
+          description: "Successfully created an authority limit profile"
+          schema:
+            $ref: "#/definitions/AuthorityLimitProfileResponse"
+  "/authority-limit-profiles/{authorityLimitProfileId}":
+    parameters:
+    - $ref: "#/parameters/authorityLimitProfileId"
+    get:
+      summary: "Retrieve an authority limit profile"
+      description: "Retrieve an authority limit profile"
+      operationId: getAuthorityLimitProfile
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: get-element
+        resourceType: AuthorityLimitProfile
+      x-gw-parameter-sets:
+      - get-element
+      responses:
+        "200":
+          description: "Successfully returned an authority limit profile"
+          schema:
+            $ref: "#/definitions/AuthorityLimitProfileResponse"
+    patch:
+      summary: "Update an authority limit profile"
+      description: "Update an authority limit profile"
+      operationId: patchAuthorityLimitProfile
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: patch-element
+        resourceType: AuthorityLimitProfile
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/AuthorityLimitProfileRequest"
+      x-gw-parameter-sets:
+      - patch-element
+      responses:
+        "200":
+          description: "Successfully updated an authority limit profile"
+          schema:
+            $ref: "#/definitions/AuthorityLimitProfileResponse"
+    delete:
+      summary: "Delete an authority limit profile"
+      description: "Delete an authority limit profile"
+      operationId: deleteAuthorityLimitProfile
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: delete-element
+        resourceType: AuthorityLimitProfile
+      x-gw-parameter-sets:
+      - delete-element
+      responses:
+        "204":
+          description: "Successfully deleted an authority limit profile"
+  "/authority-limit-profiles/{authorityLimitProfileId}/limits":
+    parameters:
+    - $ref: "#/parameters/authorityLimitProfileId"
+    get:
+      summary: "Retrieve the list of limits for the given authority limit profile"
+      description: "Retrieve the list of limits for the given authority limit profile"
+      operationId: getLimits
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: AuthorityLimit
+        operationType: get-collection
+        resourceType: AuthorityLimits
+      x-gw-parameter-sets:
+      - get-collection
+      responses:
+        "200":
+          description: "Successfully returned a list of limits for the given authority limit profile"
+          schema:
+            $ref: "#/definitions/AuthorityLimitList"
+    post:
+      summary: "Create a new limit for the given authority limit profile"
+      description: "Create a new limit for the given authority limit profile"
+      operationId: createLimit
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: AuthorityLimit
+        operationType: post-collection
+        resourceType: AuthorityLimits
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/AuthorityLimitRequest"
+      x-gw-parameter-sets:
+      - post-collection
+      responses:
+        "201":
+          description: "Successfully created an authority limit on the authority limit profile"
+          schema:
+            $ref: "#/definitions/AuthorityLimitResponse"
+  "/authority-limit-profiles/{authorityLimitProfileId}/limits/{limitId}":
+    parameters:
+    - $ref: "#/parameters/authorityLimitProfileId"
+    - $ref: "#/parameters/limitId"
+    get:
+      summary: "Retrieve an authority limit"
+      description: "Retrieve an authority limit"
+      operationId: getLimit
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: get-element
+        resourceType: AuthorityLimit
+      x-gw-parameter-sets:
+      - get-element
+      responses:
+        "200":
+          description: "Successfully returned an authority limit"
+          schema:
+            $ref: "#/definitions/AuthorityLimitResponse"
+    patch:
+      summary: "Update an authority limit"
+      description: "Update an authority limit"
+      operationId: patchLimit
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: patch-element
+        resourceType: AuthorityLimit
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/AuthorityLimitRequest"
+      x-gw-parameter-sets:
+      - patch-element
+      responses:
+        "200":
+          description: "Successfully updated an authority limit"
+          schema:
+            $ref: "#/definitions/AuthorityLimitResponse"
+    delete:
+      summary: "Delete an authority limit"
+      description: "Delete an authority limit"
+      operationId: deleteLimit
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: delete-element
+        resourceType: AuthorityLimit
+      x-gw-parameter-sets:
+      - delete-element
+      responses:
+        "204":
+          description: "Successfully deleted an authority limit"
+parameters:
+  authorityLimitProfileId:
+    name: authorityLimitProfileId
+    in: path
+    description: "The identifier for the authority limit profile"
+    required: true
+    type: string
+    x-gw-sinceVersion: "1.4.0"
+  limitId:
+    name: limitId
+    in: path
+    description: "The identifier for the authority limit"
+    required: true
+    type: string
+    x-gw-sinceVersion: "1.4.0"
+x-gw-cors-policy: admin
+definitions:
+  AdminInclusions:
+    type: object
+    properties:
+      AuthorityLimit:
+        type: array
+        items:
+          $ref: "#/definitions/AuthorityLimitData"
+  AuthorityLimitData:
+    x-gw-extend:
+    - "#/definitions/DataEnvelope"
+    required:
+    - attributes
+    properties:
+      attributes:
+        $ref: "admin#/definitions/AuthorityLimit"
+  AuthorityLimitList:
+    type: object
+    x-gw-extend:
+    - "#/definitions/DataListEnvelope"
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/AuthorityLimitData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  AuthorityLimitProfileData:
+    x-gw-extend:
+    - "#/definitions/DataEnvelope"
+    required:
+    - attributes
+    properties:
+      attributes:
+        $ref: "admin#/definitions/AuthorityLimitProfile"
+  AuthorityLimitProfileList:
+    type: object
+    x-gw-extend:
+    - "#/definitions/DataListEnvelope"
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/AuthorityLimitProfileData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  AuthorityLimitProfileRequest:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: "#/definitions/AuthorityLimitProfileData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  AuthorityLimitProfileResponse:
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/AuthorityLimitProfileData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  AuthorityLimitRequest:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: "#/definitions/AuthorityLimitData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  AuthorityLimitResponse:
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/AuthorityLimitData"
+      included:
+        $ref: "#/definitions/AdminInclusions"

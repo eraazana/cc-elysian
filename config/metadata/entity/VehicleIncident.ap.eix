@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<internalExtension
+  xmlns="http://guidewire.com/datamodel"
+  entityName="VehicleIncident">
+  <typekey
+    desc="Status of the child safety seat"
+    name="ChildSafetySeatStatus"
+    nullok="true"
+    typelist="ChildSafetySeatStatus"/>
+</internalExtension>

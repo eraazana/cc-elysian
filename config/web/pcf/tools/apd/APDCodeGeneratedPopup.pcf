@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../../pcf.xsd">
+  <Popup
+    afterCommit="TopLocation.startEditing()"
+    id="APDCodeGeneratedPopup"
+    title="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.Success&quot;)">
+    <LocationEntryPoint
+      signature="APDCodeGeneratedPopup(helper: gw.apd.model.generate.GenerationHelper, branchName: String)"/>
+    <Variable
+      name="helper"
+      type="gw.apd.model.generate.GenerationHelper"/>
+    <Variable
+      name="branchName"
+      type="java.lang.String"/>
+    <Screen>
+      <Verbatim
+        id="APDCodeGeneratedSuccessDetails"
+        label="helper.IsDeployed ? DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.SuccessCloudDetails&quot;) : DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.SuccessDetails&quot;)"/>
+      <DetailViewPanel>
+        <InputColumn>
+          <TextInput
+            id="ApdGenerationSuccessBranch"
+            label="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.BranchName&quot;)"
+            value="helper.getBranchName(branchName)"
+            visible="helper.IsDeployed"/>
+        </InputColumn>
+      </DetailViewPanel>
+    </Screen>
+  </Popup>
+</PCF>

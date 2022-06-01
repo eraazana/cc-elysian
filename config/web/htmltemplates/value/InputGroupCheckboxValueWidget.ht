@@ -1,0 +1,1 @@
+<input name="${renderId}" type="checkbox" checked="${expanded}" disabled="${disabled}" aria-label="${label}" class="${noTrack ? 'gw-noTrack'}"/>

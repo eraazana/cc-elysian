@@ -1,0 +1,597 @@
+swagger: "2.0"
+info:
+  title: "Admin API"
+  description: "APIs for InsuranceSuite administration objects"
+  version: "1.4.0"
+basePath: /admin/v1
+consumes:
+- application/json
+produces:
+- application/json
+x-gw-combine:
+- gw.core.pl.framework.v1.framework_pl-1.0
+- gw.core.pl.batch.v1.batch_pl-1.0
+x-gw-schema-import:
+  admin: gw.core.pl.admin.v1.admin_pl-1.0
+paths:
+  /groups:
+    get:
+      summary: "Retrieve a list of groups"
+      description: "Retrieve a list of groups"
+      operationId: getGroups
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: Group
+        operationType: get-collection
+        resourceType: Groups
+      x-gw-parameter-sets:
+      - get-collection
+      responses:
+        "200":
+          description: "Successfully returned a list of groups"
+          schema:
+            $ref: "#/definitions/GroupList"
+  "/groups/{groupId}":
+    parameters:
+    - $ref: "#/parameters/groupId"
+    get:
+      summary: "Returns details for a single group"
+      description: "Returns details for a single group"
+      operationId: getGroup
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: get-element
+        resourceType: Group
+      x-gw-parameter-sets:
+      - get-element
+      responses:
+        "200":
+          description: "Successfully returned details for a single group"
+          schema:
+            $ref: "#/definitions/GroupResponse"
+  "/groups/{groupId}/users":
+    parameters:
+    - $ref: "#/parameters/groupId"
+    get:
+      summary: "Retrieve the users associated with the given group"
+      description: "Retrieve the users associated with the given group"
+      operationId: getGroupUsers
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: GroupUser
+        operationType: get-collection
+        resourceType: GroupUsers
+      x-gw-parameter-sets: get-collection
+      responses:
+        "200":
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/GroupUserList"
+    post:
+      summary: "Add a user to the given group"
+      description: "Add a user to the given group"
+      operationId: createGroupUser
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: GroupUser
+        operationType: post-collection
+        resourceType: GroupUsers
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/GroupUserRequest"
+      x-gw-parameter-sets: post-collection
+      responses:
+        "201":
+          description: "The newly created details of the user's involvement in the given group"
+          schema:
+            $ref: "#/definitions/GroupUserResponse"
+  "/groups/{groupId}/users/{groupUserId}":
+    parameters:
+    - $ref: "#/parameters/groupId"
+    - $ref: "#/parameters/groupUserId"
+    get:
+      summary: "Retrieve details of a user's involvement in the given group"
+      description: "Retrieve details of a user's involvement in the given group"
+      operationId: getGroupUser
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: get-element
+        resourceType: GroupUser
+      x-gw-parameter-sets: get-element
+      responses:
+        "200":
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/GroupUserResponse"
+    patch:
+      summary: "Update the details of a user's involvement in the given group"
+      description: "Update the details of a user's involvement in the given group"
+      operationId: updateGroupUser
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: patch-element
+        resourceType: GroupUser
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/GroupUserRequest"
+      x-gw-parameter-sets: patch-element
+      responses:
+        "200":
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/GroupUserResponse"
+    delete:
+      summary: "Remove a user from the given group"
+      description: "Remove a user from the given group"
+      operationId: deleteGroupUser
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: delete-element
+        resourceType: GroupUser
+      x-gw-parameter-sets: delete-element
+      responses:
+        "204":
+          description: "Successful removal of the user from the given group"
+  /openapi.json:
+    get:
+      summary: "Return the Open API 3.0 representation of the schema"
+      description: "Return the Open API 3.0 representation of the schema"
+      operationId: getOpenApiSchema
+      x-gw-extensions:
+        operationType: get-element
+        resourceType: AdminOpenApiSchema
+      x-gw-parameter-sets:
+      - openapi
+      responses:
+        "200":
+          description: "Successful response"
+          schema:
+            type: string
+  /roles:
+    get:
+      summary: "Retrieve a list of roles"
+      description: "Retrieve a list of roles"
+      operationId: getRoles
+      x-gw-sinceVersion: "1.3.0"
+      x-gw-extensions:
+        childResourceType: Role
+        operationType: get-collection
+        resourceType: Roles
+      x-gw-parameter-sets:
+      - get-collection
+      responses:
+        "200":
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/RoleList"
+    post:
+      summary: "Create a new role"
+      description: "Create a new role"
+      operationId: createRole
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: Role
+        operationType: post-collection
+        resourceType: Roles
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/RoleRequest"
+      x-gw-parameter-sets:
+      - post-collection
+      responses:
+        "201":
+          description: "Successfully created a role"
+          schema:
+            $ref: "#/definitions/RoleResponse"
+  "/roles/{roleId}":
+    parameters:
+    - $ref: "#/parameters/roleId"
+    get:
+      summary: "Returns details for a single role"
+      description: "Returns details for a single role"
+      operationId: getRole
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: get-element
+        resourceType: Role
+      x-gw-parameter-sets:
+      - get-element
+      responses:
+        "200":
+          description: "Successfully returned details for a single role"
+          schema:
+            $ref: "#/definitions/RoleResponse"
+    patch:
+      summary: "Update this role's fields"
+      description: "Update this role's fields"
+      operationId: updateRole
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: patch-element
+        resourceType: Role
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/RoleRequest"
+      x-gw-parameter-sets:
+      - patch-element
+      responses:
+        "200":
+          description: "Successful update"
+          schema:
+            $ref: "#/definitions/RoleResponse"
+    delete:
+      summary: "Delete a role"
+      description: "Delete a role"
+      operationId: deleteRole
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: delete-element
+        resourceType: Role
+      x-gw-parameter-sets:
+      - delete-element
+      responses:
+        "204":
+          description: "Successful deletion"
+  "/roles/{roleId}/permissions":
+    parameters:
+    - $ref: "#/parameters/roleId"
+    get:
+      summary: "Retrieve a list of role permissions"
+      description: "Retrieve a list of role permissions"
+      operationId: getRolePermissions
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: RolePermission
+        operationType: get-collection
+        resourceType: RolePermissions
+      x-gw-parameter-sets:
+      - get-collection
+      responses:
+        "200":
+          description: "Successfully returned a list of role permissions"
+          schema:
+            $ref: "#/definitions/RolePermissionList"
+    post:
+      summary: "Create a new permission on this role"
+      description: "Create a new permission on this role"
+      operationId: createRolePermission
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        childResourceType: RolePermission
+        operationType: post-collection
+        resourceType: RolePermissions
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/RolePermissionRequest"
+      x-gw-parameter-sets:
+      - post-collection
+      responses:
+        "201":
+          description: "The details of the newly created role permission`"
+          schema:
+            $ref: "#/definitions/RolePermissionResponse"
+  "/roles/{roleId}/permissions/{permissionId}":
+    parameters:
+    - $ref: "#/parameters/roleId"
+    - $ref: "#/parameters/permissionId"
+    get:
+      summary: "The details of a permission on the given role"
+      description: "The details of a permission on the given role"
+      operationId: getRolePermission
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: get-element
+        resourceType: RolePermission
+      x-gw-parameter-sets:
+      - get-element
+      responses:
+        "200":
+          description: "Successfully returned a role permission"
+          schema:
+            $ref: "#/definitions/RolePermissionResponse"
+    delete:
+      summary: "Delete the permission on the given role"
+      description: "Delete the permission on the given role"
+      operationId: deleteRolePermission
+      x-gw-sinceVersion: "1.4.0"
+      x-gw-extensions:
+        operationType: delete-element
+        resourceType: RolePermission
+      x-gw-parameter-sets:
+      - delete-element
+      responses:
+        "204":
+          description: "Successful deletion"
+  /users:
+    get:
+      summary: "Retrieve a list of users"
+      description: "Retrieve a list of users"
+      operationId: getUsers
+      x-gw-extensions:
+        childResourceType: User
+        operationType: get-collection
+        resourceType: Users
+      x-gw-parameter-sets:
+      - get-collection
+      responses:
+        "200":
+          description: "Successful response"
+          schema:
+            $ref: "#/definitions/UserList"
+    post:
+      summary: "Create a new user"
+      description: "Create a new user"
+      operationId: createUser
+      x-gw-extensions:
+        childResourceType: User
+        operationType: post-collection
+        resourceType: Users
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/UserRequest"
+      x-gw-parameter-sets:
+      - post-collection
+      responses:
+        "201":
+          description: "The details of the newly-created user"
+          schema:
+            $ref: "#/definitions/UserResponse"
+  "/users/{userId}":
+    parameters:
+    - $ref: "#/parameters/userId"
+    get:
+      summary: "Returns details for a single user"
+      description: "Returns details for a single user"
+      operationId: getUser
+      x-gw-extensions:
+        operationType: get-element
+        resourceType: User
+      x-gw-parameter-sets:
+      - get-element
+      responses:
+        "200":
+          description: "Returns details for a single user"
+          schema:
+            $ref: "#/definitions/UserResponse"
+    patch:
+      summary: "Update this user's fields"
+      description: "Update this user's fields"
+      operationId: updateUser
+      x-gw-extensions:
+        operationType: patch-element
+        resourceType: User
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/UserRequest"
+      x-gw-parameter-sets:
+      - patch-element
+      responses:
+        "200":
+          description: "Successful update"
+          schema:
+            $ref: "#/definitions/UserResponse"
+parameters:
+  groupId:
+    name: groupId
+    in: path
+    description: "The REST identifier for the group"
+    required: true
+    type: string
+    x-gw-sinceVersion: "1.4.0"
+  groupUserId:
+    name: groupUserId
+    in: path
+    description: "The REST identifier for the group user"
+    required: true
+    type: string
+    x-gw-sinceVersion: "1.4.0"
+  permissionId:
+    name: permissionId
+    in: path
+    description: "The REST identifier for the role permission"
+    required: true
+    type: string
+    x-gw-sinceVersion: "1.4.0"
+  roleId:
+    name: roleId
+    in: path
+    description: "The REST identifier for the role"
+    required: true
+    type: string
+    x-gw-sinceVersion: "1.4.0"
+  userId:
+    name: userId
+    in: path
+    description: "The REST identifier for the user"
+    required: true
+    type: string
+x-gw-localizationKeyPrefix: admin.v1
+definitions:
+  AdminInclusions:
+    type: object
+    properties:
+      RolePermission:
+        type: array
+        items:
+          $ref: "#/definitions/RolePermissionData"
+  GroupData:
+    x-gw-extend:
+    - "#/definitions/DataEnvelope"
+    required:
+    - attributes
+    properties:
+      attributes:
+        $ref: "admin#/definitions/Group"
+  GroupList:
+    type: object
+    x-gw-extend:
+    - "#/definitions/DataListEnvelope"
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/GroupData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  GroupResponse:
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/GroupData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  GroupUserData:
+    x-gw-extend:
+    - "#/definitions/DataEnvelope"
+    required:
+    - attributes
+    properties:
+      attributes:
+        $ref: "admin#/definitions/GroupUser"
+  GroupUserList:
+    type: object
+    x-gw-extend:
+    - "#/definitions/DataListEnvelope"
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/GroupUserData"
+  GroupUserRequest:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: "#/definitions/GroupUserData"
+  GroupUserResponse:
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/GroupUserData"
+  RoleData:
+    x-gw-extend:
+    - "#/definitions/DataEnvelope"
+    required:
+    - attributes
+    properties:
+      attributes:
+        $ref: "admin#/definitions/Role"
+  RoleList:
+    type: object
+    x-gw-extend:
+    - "#/definitions/DataListEnvelope"
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/RoleData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  RolePermissionData:
+    x-gw-extend:
+    - "#/definitions/DataEnvelope"
+    required:
+    - attributes
+    properties:
+      attributes:
+        $ref: "admin#/definitions/RolePermission"
+  RolePermissionList:
+    type: object
+    x-gw-extend:
+    - "#/definitions/DataListEnvelope"
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/RolePermissionData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  RolePermissionRequest:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: "#/definitions/RolePermissionData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  RolePermissionResponse:
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/RolePermissionData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  RoleRequest:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: "#/definitions/RoleData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  RoleResponse:
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/RoleData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  UserData:
+    x-gw-extend:
+    - "#/definitions/DataEnvelope"
+    required:
+    - attributes
+    properties:
+      attributes:
+        $ref: "admin#/definitions/User"
+  UserList:
+    type: object
+    x-gw-extend:
+    - "#/definitions/DataListEnvelope"
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/UserData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  UserRequest:
+    type: object
+    required:
+    - data
+    properties:
+      data:
+        $ref: "#/definitions/UserData"
+      included:
+        $ref: "#/definitions/AdminInclusions"
+  UserResponse:
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/UserData"
+      included:
+        $ref: "#/definitions/AdminInclusions"

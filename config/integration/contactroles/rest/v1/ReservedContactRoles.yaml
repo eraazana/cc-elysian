@@ -1,0 +1,26 @@
+reservedRoles:
+  Claim:
+    roles:
+      - "reporter"
+      - "maincontact"
+      - "servicerequestparticipant"
+      - "servicerequestspecialist"
+      - "witness"
+  Exposure:
+    roles:
+      - "claimant"
+  Policy:
+    roles:
+      - "agent"
+      - "coveredparty"
+      - "excludedparty"
+      - "insured"
+  InjuryIncident:
+    roles:
+      - "injured"
+      - "PrimaryDoctor"
+  VehicleIncident:
+    roles:
+      - "driver"
+      - "incidentowner"
+      - "passenger"

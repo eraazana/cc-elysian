@@ -1,0 +1,73 @@
+{
+  "schemaName": "gw.core.cc.admin.v1.admin_core-1.0",
+  "combine": [
+    "gw.core.cc.common.v1.common_core-1.0",
+    "gw.core.pl.admin.v1.admin_pl-1.0"
+  ],
+  "mappers": {
+    "AuthorityLimit": {
+      "schemaDefinition": "AuthorityLimit",
+      "root": "entity.AuthorityLimit",
+      "properties": {
+        "costType": {
+          "path": "AuthorityLimit.CostType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "coverageType": {
+          "path": "AuthorityLimit.CoverageType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "id": {
+          "path": "AuthorityLimit.RestId"
+        },
+        "limitAmount": {
+          "path": "AuthorityLimit.LimitAmount",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "limitType": {
+          "path": "AuthorityLimit.LimitType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "policyType": {
+          "path": "AuthorityLimit.PolicyType",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "AuthorityLimitProfile": {
+      "schemaDefinition": "AuthorityLimitProfile",
+      "root": "entity.AuthorityLimitProfile",
+      "properties": {
+        "currency": {
+          "path": "AuthorityLimitProfile.Currency",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "custom": {
+          "path": "AuthorityLimitProfile.Custom"
+        },
+        "description": {
+          "path": "AuthorityLimitProfile.Description"
+        },
+        "displayName": {
+          "path": "AuthorityLimitProfile.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "AuthorityLimitProfile.RestId"
+        },
+        "name": {
+          "path": "AuthorityLimitProfile.Name"
+        }
+      }
+    },
+    "User": {
+      "schemaDefinition": "User",
+      "root": "entity.User",
+      "properties": {
+        "authorityLimitProfile": {
+          "path": "User.AuthorityProfile.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        }
+      }
+    }
+  }
+}

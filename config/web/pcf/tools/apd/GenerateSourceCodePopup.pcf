@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../../pcf.xsd">
+  <Popup
+    afterCommit="if (TopLocation.isInEditMode()) { TopLocation.commit(); TopLocation.startEditing(); } APDCodeGeneratedPopup.push(helper, branchSuffix)"
+    afterEnter="gw.apd.web.GenerateSourceCodePopupHelper.setUpCodeGeneration(CurrentLocation, helper)"
+    beforeCancel="gw.apd.web.GenerateSourceCodePopupHelper.cleanUpCodeGenerationSetup(CurrentLocation, helper)"
+    canEdit="true"
+    canVisit="true"
+    id="GenerateSourceCodePopup"
+    startInEditMode="true"
+    title="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.Title&quot;)">
+    <LocationEntryPoint
+      signature="GenerateSourceCodePopup(generator : gw.apd.model.generate.IProductGenerator)"/>
+    <Variable
+      name="generator"
+      type="gw.apd.model.generate.IProductGenerator"/>
+    <Variable
+      initialValue="new gw.apd.model.generate.GenerationHelper(generator)"
+      name="helper"
+      type="gw.apd.model.generate.GenerationHelper"/>
+    <Variable
+      initialValue="helper.IsValidForGeneration"
+      name="productTreeIsValid"
+      type="boolean"/>
+    <Variable
+      name="branchSuffix"
+      type="String"
+      initialValue=""/>
+    <Variable
+      name="hideSetupIndicator"
+      type="boolean"
+      initialValue="false"/>
+    <Screen>
+      <Toolbar>
+        <EditButtons
+          cancelLabel="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.Cancel&quot;)"
+          updateVisible="false"/>
+        <ToolbarButton
+          id="Update"
+          default="true"
+          action="gw.apd.web.GenerateSourceCodePopupHelper.generateConfiguration(CurrentLocation, branchSuffix, helper)"
+          showConfirmMessage="gw.apd.web.GenerateSourceCodePopupHelper.canCompleteGeneration(CurrentLocation, branchSuffix, helper)"
+          confirmMessage="gw.apd.web.GenerateSourceCodePopupHelper.getUpdateConfirmMessage(branchSuffix, helper)"
+          label="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.Update&quot;)"
+          visible="productTreeIsValid and gw.apd.web.GenerateSourceCodePopupHelper.canCompleteGeneration(CurrentLocation, branchSuffix, helper)"
+        />
+      </Toolbar>
+      <AlertBar
+        id="currencyMismatchAlert"
+        label="helper.CurrencyMismatchWarning"
+        visible="helper.CurrencyMismatchWarning.HasContent"/>
+      <AlertBar
+        id="changesDetectionAlert"
+        label="helper.ModifiedFileWarning"
+        visible="helper.ModifiedFileWarning.HasContent"/>
+      <DetailViewPanel>
+        <InputColumn>
+          <ProgressInput
+            id="checkoutProgress"
+            actionOnComplete="hideSetupIndicator = true; gw.apd.web.GenerateSourceCodePopupHelper.compareCheckSumAfterSetup(CurrentLocation, helper)"
+            label="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.SetupProgress&quot;)"
+            percentage="gw.apd.web.GenerateSourceCodePopupHelper.getSetupProgress(CurrentLocation, helper)"
+            visible="!hideSetupIndicator and gw.apd.web.GenerateSourceCodePopupHelper.isWaitingSetup(helper)"/>
+          <ProgressInput
+            id="commitProgress"
+            actionOnComplete="gw.apd.web.GenerateSourceCodePopupHelper.afterFinalize(CurrentLocation, helper)"
+            label="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.FinalizeProgress&quot;)"
+            percentage="gw.apd.web.GenerateSourceCodePopupHelper.getFinalizeProgress(CurrentLocation, helper)"
+            visible="gw.apd.web.GenerateSourceCodePopupHelper.isWaitingFinalize(helper)"/>
+        </InputColumn>
+      </DetailViewPanel>
+      <PanelRef
+        visible="gw.apd.web.GenerateSourceCodePopupHelper.canShowBranchSuffixPanel(helper)">
+        <Verbatim
+          id="BranchNameDescription"
+          label="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.BranchNameDescription&quot;)"/>
+        <DetailViewPanel
+          editable="true">
+          <InputColumn>
+            <TextInput
+              editable="true"
+              focusOnStartEditing="true"
+              helpText="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.BranchSuffixLength&quot;, helper.BranchPrefix, helper.BranchSuffixLengthLimit)"
+              id="BranchSuffix"
+              label="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.BranchSuffix&quot;)"
+              maxChars="33"
+              required="true"
+              value="branchSuffix">
+              <PostOnChange
+                onChange="gw.apd.web.GenerateSourceCodePopupHelper.checkBranchNameAndShowErrorMessage(CurrentLocation, branchSuffix, helper)"/>
+            </TextInput>
+            <Label
+              id="BranchNameInfo"
+              label="gw.apd.web.GenerateSourceCodePopupHelper.getBranchNameInfoMessage(helper, branchSuffix)"
+              visible="gw.apd.web.GenerateSourceCodePopupHelper.isValidBranchName(helper, branchSuffix)"/>
+          </InputColumn>
+        </DetailViewPanel>
+      </PanelRef>
+      <PanelRef
+        def="APDValidationErrorsPanelSet(generator)"
+        id="ValidationErrors"/>
+    </Screen>
+  </Popup>
+</PCF>

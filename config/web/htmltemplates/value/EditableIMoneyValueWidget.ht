@@ -1,0 +1,4 @@
+<input type="text" data-gw-currency-info="${currencyInfo}" name="${renderId}" class="${noTrack ? 'gw-noTrack'}"
+       disabled="${disabled}" aria-required="${required ? 'true' : 'false'}"
+       value="${value}" placeholder="${placeholder}"/>
+<div :if="altValue" class="gw-CurrencyValue--altValue">${altValue}</div>

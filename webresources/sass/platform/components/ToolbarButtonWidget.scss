@@ -1,0 +1,10 @@
+//See ToolbarWidget for spacing
+.gw-ToolbarButtonWidget {
+  @include gw-button--asMenuItem();
+
+  & > .gw-action--inner {
+    display: flex;
+    align-items: center;
+  }
+
+}

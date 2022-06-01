@@ -1,0 +1,538 @@
+combine:
+- gw.core.pl.common.v1.common_pl-1.0
+resources:
+  ActivityNotes:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  AdminOpenApiSchema:
+    permissions:
+      view: true
+  AssessmentContentItem:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  AssessmentContentItems:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  AssessmentSummaries:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  AssessmentSummary:
+    permissions:
+      view: true
+  AuthorityLimit:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  AuthorityLimitProfile:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  AuthorityLimitProfiles:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  AuthorityLimits:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  Check:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+      acknowledge-submission: true
+      mark-cleared: true
+      mark-issued: true
+      mark-stopped: true
+      mark-voided: true
+      request-stop: true
+      request-void: true
+  CheckSet:
+    permissions:
+      view: true
+  CheckSets:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  Checks:
+    permissions:
+      view: true
+    filter: __noFilter
+  Claim:
+    permissions:
+      view: true
+      edit: true
+      assign: true
+      cancel: true
+      close: true
+      submit: true
+      validate: true
+  ClaimActivities:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimActivityAssignees:
+    permissions:
+      view: true
+  ClaimActivityPatterns:
+    permissions:
+      view: true
+  ClaimApiOpenApiSchema:
+    permissions:
+      view: true
+  ClaimContact:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  ClaimContactRoleOwners:
+    permissions:
+      view: true
+  ClaimContacts:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimDocument:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  ClaimDocumentContent:
+    permissions:
+      view: true
+  ClaimDocuments:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimDwellingIncidents:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimExposures:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimFixedPropertyIncidents:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimGraphSchema:
+    permissions:
+      view: true
+  ClaimInfo:
+    permissions:
+      view: true
+      edit: false
+      retrieve: true
+  ClaimInfos:
+    permissions:
+      view: true
+    filter: __noFilter
+  ClaimInjuryIncidents:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimIntakeInteractions:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimLivingExpensesIncidents:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimNotes:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimOtherStructureIncidents:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimPropertyContentsIncidents:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimRelatedObjects:
+    permissions:
+      view: true
+  ClaimSearch:
+    permissions:
+      view: true
+    filter: __noFilter
+  ClaimSearchResult:
+    permissions:
+      view: true
+  ClaimSearchResultWrapper:
+    permissions:
+      view: true
+  ClaimSearchV2:
+    permissions:
+      view: true
+  ClaimServiceRequests:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ClaimSolrSearch:
+    permissions:
+      view: true
+  ClaimSolrSearchResult:
+    permissions:
+      view: true
+  ClaimVehicleIncidents:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  Claims:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ContactRoleConstraint:
+    permissions:
+      view: true
+  ContactRoleConstraints:
+    permissions:
+      view: true
+  # override common_pl
+  Document:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  DocumentContent:
+    permissions:
+      view: true
+  DwellingIncident:
+    permissions:
+      view: true
+      edit: true
+  Endorsement:
+    permissions:
+      view: true
+  Exposure:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+      assign: true
+      close: true
+      validate: true
+  FixedPropertyIncident:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  GenericRelation:
+    permissions:
+      view: true
+  Group:
+    permissions:
+      view: true
+  GroupUser:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  GroupUsers:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  Groups:
+    permissions:
+      view: true
+    filter: __noFilter
+  InjuryIncident:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  IntakeInteraction:
+    permissions:
+      view: true
+      edit: true
+  LivingExpensesIncident:
+    permissions:
+      view: true
+      edit: true
+  LocationBasedRiskUnit:
+    permissions:
+      view: true
+  LocationBasedRiskUnitCoverage:
+    permissions:
+      view: __inherit
+  LocationBasedRiskUnitCoverages:
+    permissions:
+      view: __inherit
+    filter: __noFilter
+  LocationBasedRiskUnits:
+    permissions:
+      view: true
+    filter: __noFilter
+  # override common_pl
+  Note:
+    permissions:
+      view: true
+  OtherStructureIncident:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  Payment:
+    permissions:
+      view: true
+      edit: true
+      acknowledge-submission: true
+  Payments:
+    permissions:
+      view: true
+    filter: __noFilter
+  Policy:
+    permissions:
+      view: true
+  PolicyCoverage:
+    permissions:
+      view: true
+  PolicyCoverages:
+    permissions:
+      view: true
+    filter: __noFilter
+  PolicyEndorsements:
+    permissions:
+      view: true
+    filter: __noFilter
+  PolicyLocation:
+    permissions:
+      view: true
+  PolicyLocations:
+    permissions:
+      view: true
+    filter: __noFilter
+  PropertyContentsIncident:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  Recoveries:
+    permissions:
+      view: true
+    filter: __noFilter
+  Recovery:
+    permissions:
+      view: true
+      edit: true
+      acknowledge-submission: true
+  RecoveryReserve:
+    permissions:
+      view: true
+      edit: true
+      acknowledge-submission: true
+  RecoveryReserveSet:
+    permissions:
+      view: true
+  RecoveryReserveSets:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  RecoveryReserves:
+    permissions:
+      view: true
+    filter: __noFilter
+  RecoverySet:
+    permissions:
+      view: true
+  RecoverySets:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  Reserve:
+    permissions:
+      view: true
+      edit: true
+      acknowledge-submission: true
+  ReserveSet:
+    permissions:
+      view: true
+  ReserveSets:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  Reserves:
+    permissions:
+      view: true
+    filter: __noFilter
+  Role:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  RolePermission:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  RolePermissions:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  Roles:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  ServiceRequest:
+    permissions:
+      view: true
+      edit: true
+      accept: true
+      add-quote: true
+      approve-quote: true
+      assign: true
+      cancel: true
+      complete-work: true
+      decline: true
+      internal-cancel: true
+      submit: true
+  ServiceRequestInvoice:
+    permissions:
+      view: true
+      edit: true
+      approve: true
+      mark-as-paid: true
+      withdraw: true
+  ServiceRequestInvoices:
+    permissions:
+      view: true
+      create: true
+    filter: __nofilter
+  ServiceRequests:
+    permissions:
+      view: true
+    filter: __noFilter
+  UnverifiedLocationBasedRiskUnit:
+    permissions:
+      view: __inherit
+      edit: __inherit
+  UnverifiedLocationBasedRiskUnitCoverage:
+    permissions:
+      view: __inherit
+      edit: __inherit
+  UnverifiedLocationBasedRiskUnitCoverages:
+    permissions:
+      view: __inherit
+      create: __inherit
+    filter: __noFilter
+  UnverifiedLocationBasedRiskUnits:
+    permissions:
+      view: __inherit
+      create: __inherit
+    filter: __noFilter
+  UnverifiedPolicies:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  UnverifiedPolicy:
+    permissions:
+      view: true
+      edit: true
+  UnverifiedPolicyContacts:
+    permissions:
+      view: __inherit
+      create: __inherit
+    filter: __noFilter
+  UnverifiedPolicyCoverage:
+    permissions:
+      view: __inherit
+      edit: __inherit
+  UnverifiedPolicyCoverages:
+    permissions:
+      view: __inherit
+      create: __inherit
+    filter: __noFilter
+  UnverifiedPolicyLocation:
+    permissions:
+      view: __inherit
+      edit: __inherit
+  UnverifiedPolicyLocations:
+    permissions:
+      view: __inherit
+      create: __inherit
+    filter: __noFilter
+  UnverifiedVehicleRiskUnit:
+    permissions:
+      view: __inherit
+      edit: __inherit
+  UnverifiedVehicleRiskUnitCoverage:
+    permissions:
+      view: __inherit
+      edit: __inherit
+  UnverifiedVehicleRiskUnitCoverages:
+    permissions:
+      view: __inherit
+      create: __inherit
+    filter: __noFilter
+  UnverifiedVehicleRiskUnits:
+    permissions:
+      view: __inherit
+      create: __inherit
+    filter: __noFilter
+  User:
+    permissions:
+      view: true
+      edit: true
+  Users:
+    permissions:
+      view: true
+      create: true
+    filter: __noFilter
+  VehicleIncident:
+    permissions:
+      view: true
+      edit: true
+      delete: true
+  VehicleRiskUnit:
+    permissions:
+      view: true
+  VehicleRiskUnitCoverage:
+    permissions:
+      view: __inherit
+  VehicleRiskUnitCoverages:
+    permissions:
+      view: __inherit
+    filter: __noFilter
+  VehicleRiskUnits:
+    permissions:
+      view: true
+    filter: __noFilter

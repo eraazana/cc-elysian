@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<PCF
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../../../../pcf.xsd">
+  <Popup
+    canEdit="true"
+    canVisit="gw.apd.web.ProductManagementHelper.Enabled"
+    id="APDConfigureGenerationPopup"
+    startInEditMode="true"
+    title="DisplayKey.get(&quot;Web.APDConfigureGenerationPopup.Title&quot;, product.Name)">
+    <LocationEntryPoint
+      signature="APDConfigureGenerationPopup(product : gw.apdcloud.client.model.APDProductDTO)"/>
+    <Variable
+      name="product"
+      type="gw.apdcloud.client.model.APDProductDTO"/>
+    <Variable
+      name="helper"
+      type="gw.apd.web.ProductManagementHelper"
+      initialValue="new gw.apd.web.ProductManagementHelper()"
+    />
+    <Variable
+      name="selections"
+      type="java.util.List&lt;gw.apd.web.RiskObjectSelection&gt;"
+      initialValue="helper.buildRiskObjectSelections(product)"
+    />
+    <Screen>
+      <Toolbar>
+        <EditButtons
+          cancelLabel="DisplayKey.get(&quot;Web.APDProduct.GenerateSourceCode.Cancel&quot;)"
+          updateVisible="false"/>
+        <ToolbarButton
+          id="Generate"
+          default="true"
+          action="GenerateSourceCodePopup.push(helper.createGeneratorInstance(product, selections))"
+          label="DisplayKey.get(&quot;Web.APDConfigureGenerationPopup.Generate&quot;)"
+        />
+      </Toolbar>
+      <PanelRef>
+        <ListViewPanel 
+          id="RiskObjectsLV">
+          <RowIterator
+            editable="true"
+            elementName="RiskObject"
+            value="selections"
+            valueType="java.util.List&lt;gw.apd.web.RiskObjectSelection&gt;">
+            <Row>
+              <TextCell
+                id="RiskObjectName"
+                label="DisplayKey.get(&quot;Web.APDConfigureGenerationPopup.SelectExposureType.RiskObject.Name&quot;)"
+                value="RiskObject.RiskObject.Name"/>
+              <TypeKeyCell
+                editable="true"
+                id="SelectExposure"
+                label="DisplayKey.get(&quot;Web.APDConfigureGenerationPopup.SelectExposureType.ExposureType&quot;)"
+                noneSelectedLabel="DisplayKey.get(&quot;Web.APDConfigureGenerationPopup.SelectExposureType.NoneSelected&quot;)"
+                value="RiskObject.SelectedExposure"
+                valueType="typekey.ExposureType"
+              />
+            </Row>
+          </RowIterator>
+        </ListViewPanel>
+      </PanelRef>
+    </Screen>
+  </Popup>
+    
+</PCF>

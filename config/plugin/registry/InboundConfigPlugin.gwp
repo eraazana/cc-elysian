@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<plugin
+  interface="IStartablePlugin"
+  name="InboundConfigPlugin">
+  <plugin-java
+    javaclass="com.guidewire.inboundfile.plugin.InboundConfigPlugin">
+    <!--The path to the external configuration file location relative to the modules/configuration directory-->
+    <param
+      name="externalConfigFileLocation"
+      value=""/>
+    <param
+      name="updateExisting"
+      value="false"/>
+  </plugin-java>
+</plugin>

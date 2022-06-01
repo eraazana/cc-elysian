@@ -1,0 +1,9 @@
+<input type="text"
+       name="${renderId}"
+       class="${noTrack ? 'gw-noTrack'}"
+       disabled="${disabled}"
+       aria-required="${required ? 'true' : 'false'}"
+       value="${currentValue}"
+       maxlength="${maxlength}"
+       readonly="${readonly}"
+       placeholder="${placeholder}"/>

@@ -1,0 +1,8 @@
+swagger: "2.0"
+x-gw-combine:
+- gw.core.pl.common.v1.common_pl-1.0
+- gw.core.cc.framework.v1.framework_core-1.0
+x-gw-schema-import:
+  common: gw.core.cc.common.v1.common_core-1.0
+paths: {}
+x-gw-cors-policy: common

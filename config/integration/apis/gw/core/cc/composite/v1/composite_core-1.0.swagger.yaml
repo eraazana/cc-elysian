@@ -1,0 +1,8 @@
+swagger: "2.0"
+x-gw-combine:
+- gw.core.pl.composite.v1.composite_pl-1.0
+x-gw-apihandlers:
+- gw.rest.core.cc.framework.v1.composite.CCCompositeApiHandler
+paths: {}
+parameters: {}
+definitions: {}

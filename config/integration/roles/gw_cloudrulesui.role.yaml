@@ -1,0 +1,15 @@
+name: gw_cloudrulesui
+endpoints:
+- endpoint: /claim/v1/graph-schema
+  methods:
+  - GET
+- endpoint: "/common/v1/typelists/*"
+  methods:
+  - GET
+- endpoint: /common/v1/typelists
+  methods:
+  - GET
+accessibleFields:
+  TypeList:
+    view:
+    - "*"

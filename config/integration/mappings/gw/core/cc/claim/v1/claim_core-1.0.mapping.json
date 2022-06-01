@@ -1,0 +1,2544 @@
+{
+  "schemaName": "gw.core.cc.claim.v1.claim_core-1.0",
+  "combine": [
+    "gw.core.cc.common.v1.common_core-1.0"
+  ],
+  "mappers": {
+    "AdditionalInfo": {
+      "schemaDefinition": "AdditionalInfo",
+      "root": "gw.rest.core.cc.claim.v1.roleconstraints.config.RoleSchemaConstraint.AdditionalInfo",
+      "properties": {
+        "propertyName": {
+          "path": "AdditionalInfo.PropertyName"
+        },
+        "value": {
+          "path": "AdditionalInfo.Value"
+        }
+      }
+    },
+    "AssessmentContentItem": {
+      "schemaDefinition": "AssessmentContentItem",
+      "root": "entity.AssessmentContentItem",
+      "properties": {
+        "amountAfterLimit": {
+          "path": "AssessmentContentItem.AmountAfterLimit",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "contentCategory": {
+          "path": "AssessmentContentItem.ContentCategory",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "contentSchedule": {
+          "path": "AssessmentContentItem.ContentSchedule",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "dateAcquired": {
+          "path": "AssessmentContentItem.DateAcquired"
+        },
+        "depreciationPercentage": {
+          "path": "AssessmentContentItem.DepreciationPercentage"
+        },
+        "description": {
+          "path": "AssessmentContentItem.Description"
+        },
+        "id": {
+          "path": "AssessmentContentItem.RestId"
+        },
+        "incidentOrder": {
+          "path": "AssessmentContentItem.IncidentOrder"
+        },
+        "itemComment": {
+          "path": "AssessmentContentItem.ItemComment"
+        },
+        "numberOfItems": {
+          "path": "AssessmentContentItem.NumberOfItems"
+        },
+        "purchaseCost": {
+          "path": "AssessmentContentItem.PurchaseCost",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "replacementValue": {
+          "path": "AssessmentContentItem.ReplacementValue",
+          "mapper": "#/mappers/CurrencyAmount"
+        }
+      }
+    },
+    "AssessmentSummary": {
+      "schemaDefinition": "AssessmentSummary",
+      "root": "entity.AssessmentSummary",
+      "properties": {
+        "category": {
+          "path": "AssessmentSummary.Category"
+        },
+        "exposure": {
+          "path": "AssessmentSummary.Exposure.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "id": {
+          "path": "AssessmentSummary.RestId"
+        },
+        "normalizedScore": {
+          "path": "AssessmentSummary.NormalizedScore"
+        },
+        "rawAssessmentReferenceId": {
+          "path": "AssessmentSummary.RawAssessmentReferenceID"
+        },
+        "recommendedActionCode": {
+          "path": "AssessmentSummary.RecommendedActionCode"
+        },
+        "recommendedActionDescription": {
+          "path": "AssessmentSummary.RecommendedActionDescription"
+        },
+        "score": {
+          "path": "AssessmentSummary.Score"
+        },
+        "scoreDate": {
+          "path": "AssessmentSummary.ScoreDate"
+        },
+        "scorePercentile": {
+          "path": "AssessmentSummary.ScorePercentile"
+        },
+        "tapId": {
+          "path": "AssessmentSummary.TapID"
+        },
+        "tapSubtypeId": {
+          "path": "AssessmentSummary.TapSubtypeID"
+        }
+      }
+    },
+    "Check": {
+      "schemaDefinition": "Check",
+      "root": "entity.Check",
+      "properties": {
+        "bankAccount": {
+          "path": "Check.BankAccount",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "checkBatching": {
+          "path": "Check.CheckBatching",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "checkInstructions": {
+          "path": "Check.CheckInstructions",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "checkNumber": {
+          "path": "Check.CheckNumber"
+        },
+        "checkType": {
+          "path": "Check.CheckType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "claimContact": {
+          "path": "Check.ClaimContact",
+          "mapper": "#/mappers/ClaimContactReference"
+        },
+        "comments": {
+          "path": "Check.Comments"
+        },
+        "dateOfService": {
+          "path": "Check.DateOfService"
+        },
+        "deductionType": {
+          "path": "Check.DeductionType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "deliveryMethod": {
+          "path": "Check.DeliveryMethod",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "enteredTime": {
+          "path": "Check.EnteredTime"
+        },
+        "grossAmount": {
+          "path": "new gw.api.financials.CurrencyAmount(Check.CheckRpt.GrossAmount, Check.CheckRpt.Currency)",
+          "mapper": "#/mappers/CurrencyAmount",
+          "predicate": "Check.CheckRpt != null"
+        },
+        "id": {
+          "path": "Check.RestId"
+        },
+        "invoiceNumber": {
+          "path": "Check.InvoiceNumber"
+        },
+        "issueDate": {
+          "path": "Check.IssueDate"
+        },
+        "mailTo": {
+          "path": "Check.MailTo"
+        },
+        "mailingAddress": {
+          "path": "Check.MailingAddress",
+          "mapper": "#/mappers/Address"
+        },
+        "memo": {
+          "path": "Check.Memo"
+        },
+        "payTo": {
+          "path": "Check.PayTo"
+        },
+        "payees": {
+          "path": "Check.Payees.sortBy(\\p -> p.Payee.RestV1_SafeDisplayName)",
+          "mapper": "#/mappers/Payee"
+        },
+        "paymentMethod": {
+          "path": "Check.PaymentMethod",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "payments": {
+          "path": "gw.rest.core.cc.claim.v1.claims.ClaimRestV1Methods.sortTransactions(Check.Payments.toList())*.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "paymentsToWrite": {
+          "path": "null as entity.Payment[]",
+          "mapper": "#/mappers/Transaction"
+        },
+        "portion": {
+          "path": "Check.Primary ? null : Check.Portion",
+          "mapper": "#/mappers/CheckPortion"
+        },
+        "reportability": {
+          "path": "Check.Reportability",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "reportableAmount": {
+          "path": "Check.ReportableAmount",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "scheduledSendDate": {
+          "path": "Check.ScheduledSendDate"
+        },
+        "scheduledSendDateTime": {
+          "path": "Check.ScheduledSendDate"
+        },
+        "servicePdEnd": {
+          "path": "Check.ServicePdEnd"
+        },
+        "servicePdStart": {
+          "path": "Check.ServicePdStart"
+        },
+        "status": {
+          "path": "Check.Status",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "CheckPortion": {
+      "schemaDefinition": "CheckPortion",
+      "root": "entity.CheckPortion",
+      "properties": {
+        "fixedAmount": {
+          "path": "CheckPortion.FixedTransactionAmount",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "percentage": {
+          "path": "CheckPortion.Percentage"
+        }
+      }
+    },
+    "CheckRecurrence": {
+      "schemaDefinition": "CheckRecurrence",
+      "root": "entity.CheckRecurrence",
+      "properties": {
+        "firstDueDate": {
+          "path": "CheckRecurrence.FirstDueDate"
+        },
+        "issuanceDateOffset": {
+          "path": "CheckRecurrence.IssuanceDateOffset"
+        },
+        "monthlyFrequency": {
+          "path": "(CheckRecurrence as MonthlyCheckRecurrence).MonthlyFrequency",
+          "predicate": "CheckRecurrence typeis MonthlyCheckRecurrence"
+        },
+        "numChecks": {
+          "path": "CheckRecurrence.NumChecks"
+        },
+        "recurrenceDate": {
+          "path": "(CheckRecurrence as MonthlyCheckRecurrence).RecurrenceDate",
+          "predicate": "CheckRecurrence typeis MonthlyCheckRecurrence"
+        },
+        "recurrenceDay": {
+          "path": "CheckRecurrence.RecurrenceDay",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "recurrenceWeek": {
+          "path": "(CheckRecurrence as MonthlyCheckRecurrence).RecurrenceWeek",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "CheckRecurrence typeis MonthlyCheckRecurrence"
+        },
+        "subtype": {
+          "path": "CheckRecurrence.Subtype",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "weeklyFrequency": {
+          "path": "(CheckRecurrence as WeeklyCheckRecurrence).WeeklyFrequency",
+          "predicate": "CheckRecurrence typeis WeeklyCheckRecurrence"
+        }
+      }
+    },
+    "CheckSet": {
+      "schemaDefinition": "CheckSet",
+      "root": "entity.CheckSet",
+      "properties": {
+        "approvalDate": {
+          "path": "CheckSet.ApprovalDate"
+        },
+        "approvalStatus": {
+          "path": "CheckSet.ApprovalStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "checks": {
+          "path": "com.guidewire.cc.domain.financials.rest.CheckSetRestMethods.getAllChecks(CheckSet)*.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "createTime": {
+          "path": "CheckSet.CreateTime"
+        },
+        "id": {
+          "path": "CheckSet.RestId"
+        },
+        "primaryCheckToWrite": {
+          "path": "null as entity.Check",
+          "mapper": "#/mappers/Check"
+        },
+        "recurrence": {
+          "path": "CheckSet.Recurrence",
+          "mapper": "#/mappers/CheckRecurrence"
+        },
+        "requestingUser": {
+          "path": "CheckSet.RequestingUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "secondaryChecksToWrite": {
+          "path": "null as entity.Check[]",
+          "mapper": "#/mappers/Check"
+        }
+      }
+    },
+    "Claim": {
+      "schemaDefinition": "Claim",
+      "root": "entity.Claim",
+      "properties": {
+        "allValidationLevelsReached": {
+          "path": "Claim.RestV1.AllValidationLevelsReached",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "assignedByUser": {
+          "path": "Claim.AssignedByUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignedGroup": {
+          "path": "Claim.AssignedGroup.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignedQueue": {
+          "path": "Claim.AssignedQueue.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignedUser": {
+          "path": "Claim.AssignedUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignmentStatus": {
+          "path": "Claim.AssignmentStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "claimNumber": {
+          "path": "Claim.ClaimNumber"
+        },
+        "closeDate": {
+          "path": "Claim.CloseDate"
+        },
+        "closedOutcome": {
+          "path": "Claim.ClosedOutcome",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "coverageInQuestion": {
+          "path": "Claim.CoverageInQuestion"
+        },
+        "description": {
+          "path": "Claim.Description"
+        },
+        "faultRating": {
+          "path": "Claim.FaultRating",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        //Suppress warnings
+        "filterPropertyRiskUnits": {
+          "path": "null as String[]"
+        },
+        //Suppress warnings
+        "filterVehicleRiskUnits": {
+          "path": "null as String[]"
+        },
+        "flagged": {
+          "path": "Claim.Flagged",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "howReported": {
+          "path": "Claim.HowReported",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "id": {
+          "path": "Claim.RestId"
+        },
+        "incidentOnly": {
+          "path": "Claim.IncidentReport"
+        },
+        "jurisdiction": {
+          "path": "Claim.JurisdictionState",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "lobCode": {
+          "path": "Claim.LOBCode",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "lossCause": {
+          "path": "Claim.LossCause",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "lossDate": {
+          "path": "Claim.LossDate"
+        },
+        "lossLocation": {
+          "path": "Claim.RestV1.LossLocationWrapper",
+          "mapper": "#/mappers/ClaimAddress"
+        },
+        "lossType": {
+          "path": "Claim.LossType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "policyAddresses": {
+          "path": "Claim.RestV1.PolicyAddresses",
+          "mapper": "#/mappers/ClaimAddress"
+        },
+        "policyNumber": {
+          "path": "Claim.Policy.PolicyNumber"
+        },
+        "reportedByType": {
+          "path": "Claim.ReportedByType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "reportedDate": {
+          "path": "Claim.ReportedDate"
+        },
+        "segment": {
+          "path": "Claim.Segment",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "siuStatus": {
+          "path": "Claim.SIUStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "state": {
+          "path": "Claim.State",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "strategy": {
+          "path": "Claim.Strategy",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "validationLevel": {
+          "path": "Claim.ValidationLevel",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "ClaimAddress": {
+      "schemaDefinition": "ClaimAddress",
+      "root": "gw.rest.core.cc.claim.v1.claims.addresses.ClaimAddress",
+      "properties": {
+        // "allOf": [{"$ref": "#/mappers/Address"}]
+        "addressLine1": {
+          "path": "ClaimAddress.Address.AddressLine1"
+        },
+        "addressLine2": {
+          "path": "ClaimAddress.Address.AddressLine2"
+        },
+        "addressLine3": {
+          "path": "ClaimAddress.Address.AddressLine3"
+        },
+        // Hong Kong - Kowloon or New Territories
+        "area": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('area')"
+        },
+        "city": {
+          "path": "ClaimAddress.Address.City"
+        },
+        "country": {
+          "path": "ClaimAddress.Address.Country"
+        },
+        "county": {
+          "path": "ClaimAddress.Address.County"
+        },
+        // Columbia and Nicaragua
+        "department": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('department')"
+        },
+        "displayName": {
+          "path": "ClaimAddress.Address.RestV1_SafeDisplayName"
+        },
+        // United Arab Emirates
+        "emirate": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('emirate')"
+        },
+        "id": {
+          "path": "ClaimAddress.Address.RestId"
+        },
+        "island": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('island')"
+        },
+        // Russia
+        "oblast": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('oblast')"
+        },
+        // Jamaica and Barbados
+        "parish": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('parish')"
+        },
+        // CC-specific fields
+        "policyAddress": {
+          "path": "ClaimAddress.PolicyAddress"
+        },
+        "policyLabel": {
+          "path": "ClaimAddress.PolicyLabel"
+        },
+        "postalCode": {
+          "path": "ClaimAddress.Address.PostalCode"
+        },
+        //Japan
+        "prefecture": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('prefecture')"
+        },
+        "province": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('province')"
+        },
+        "state": {
+          "path": "ClaimAddress.Address.State",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ClaimAddress.Address.RestV1_isFieldAvailable('state')"
+        }
+      }
+    },
+    "ClaimAddressReference": {
+      "schemaDefinition": "PolicyObjectReference",
+      "root": "gw.rest.core.cc.claim.v1.claims.addresses.ClaimAddress",
+      "properties": {
+        "displayName": {
+          "path": "ClaimAddress.DisplayName"
+        },
+        "id": {
+          "path": "ClaimAddress.RestId"
+        },
+        "jsonPath": {
+          "path": "ClaimAddress.AsResourceReference.JsonPath"
+        },
+        "policyLabel": {
+          "path": "ClaimAddress.PolicyLabel"
+        },
+        "policySystemId": {
+          "path": "ClaimAddress.PolicySystemId"
+        },
+        "type": {
+          "path": "ClaimAddress.AsResourceReference.Type"
+        },
+        "uri": {
+          "path": "ClaimAddress.AsResourceReference.Uri"
+        }
+      }
+    },
+    "ClaimAssignee": {
+      "schemaDefinition": "ClaimAssignee",
+      "root": "gw.api.assignment.Assignee",
+      "properties": {
+        "autoAssign": {
+          "path": "Assignee.RestV1_AutoAssign"
+        },
+        "groupId": {
+          "path": "Assignee.RestV1_GroupId"
+        },
+        "name": {
+          "path": "Assignee.RestV1_Name"
+        },
+        "userId": {
+          "path": "Assignee.RestV1_UserId"
+        }
+      }
+    },
+    "ClaimContact": {
+      "schemaDefinition": "ClaimContact",
+      "root": "entity.ClaimContact",
+      "properties": {
+        "addressBookUID": {
+          "path": "ClaimContact.Contact.AddressBookUID"
+        },
+        "cellPhone": {
+          "path": "ClaimContact.Contact.RestV1_getPhoneNumber(Person#CellPhone)",
+          "mapper": "#/mappers/PhoneNumber",
+          "predicate": "ClaimContact.Contact typeis Person"
+        },
+        "companyName": {
+          "path": "ClaimContact.Contact.Name",
+          "predicate": "ClaimContact.Contact typeis Company"
+        },
+        "contactSubtype": {
+          "path": "ClaimContact.Contact.Subtype"
+        },
+        "dateOfBirth": {
+          "path": "(ClaimContact.Contact as Person).DateOfBirth",
+          "predicate": "ClaimContact.Contact typeis Person"
+        },
+        "displayName": {
+          "path": "ClaimContact.Contact.RestV1_SafeDisplayName"
+        },
+        "editableRoles": {
+          "path": "ClaimContact.RestV1_EditableRoles",
+          "mapper": "#/mappers/ContactRole"
+        },
+        "emailAddress1": {
+          "path": "ClaimContact.Contact.EmailAddress1"
+        },
+        "emailAddress2": {
+          "path": "ClaimContact.Contact.EmailAddress2"
+        },
+        "firstName": {
+          "path": "(ClaimContact.Contact as Person).FirstName",
+          "predicate": "ClaimContact.Contact typeis Person"
+        },
+        "homePhone": {
+          "path": "ClaimContact.Contact.RestV1_getPhoneNumber(Contact#HomePhone)",
+          "mapper": "#/mappers/PhoneNumber",
+          "predicate": "ClaimContact.Contact typeis Person"
+        },
+        "id": {
+          "path": "ClaimContact.RestId"
+        },
+        "lastName": {
+          "path": "(ClaimContact.Contact as Person).LastName",
+          "predicate": "ClaimContact.Contact typeis Person"
+        },
+        "linkStatus": {
+          "path": "ClaimContact.RestV1_LinkStatus",
+          "predicate": "ClaimContact.RestV1_IncludeLinkStatus"
+        },
+        "policySystemId": {
+          "path": "ClaimContact.Contact.PolicySystemId"
+        },
+        "primaryAddress": {
+          "path": "ClaimContact.Contact.PrimaryAddress",
+          "mapper": "#/mappers/Address"
+        },
+        "primaryLanguage": {
+          "path": "ClaimContact.Contact.PrimaryLanguage",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "primaryLocale": {
+          "path": "ClaimContact.Contact.PrimaryLocale",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "primaryPhone": {
+          "path": "ClaimContact.Contact.PrimaryPhoneValue"
+        },
+        "primaryPhoneType": {
+          "path": "ClaimContact.Contact.PrimaryPhone",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "roles": {
+          "path": "ClaimContact.RestV1_SortedRoles",
+          "mapper": "#/mappers/ContactRole"
+        },
+        // Suppress warnings. We don't want to reveal the un-obfuscated value, and the masking enhancement is in content, so we override it there with the masked value. Core will return null until an OOTB core solution is added.
+        "taxId": {
+          "path": "null as String"
+        },
+        "workPhone": {
+          "path": "ClaimContact.Contact.RestV1_getPhoneNumber(Contact#WorkPhone)",
+          "mapper": "#/mappers/PhoneNumber"
+        }
+      }
+    },
+    "ClaimContactReference": {
+      "schemaDefinition": "UpdatablePolicyObjectReference",
+      "root": "entity.ClaimContact",
+      "properties": {
+        "displayName": {
+          "path": "ClaimContact.Contact.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "ClaimContact.RestId"
+        },
+        "jsonPath": {
+          "path": "ClaimContact.RestV1_AsReference.JsonPath"
+        },
+        "policySystemId": {
+          "path": "ClaimContact.Contact.PolicySystemId"
+        },
+        // Suppress warnings
+        "refid": {
+          "path": "null as String",
+          "predicate": "false"
+        },
+        "type": {
+          "path": "ClaimContact.RestV1_AsReference.Type"
+        },
+        "uri": {
+          "path": "ClaimContact.RestV1_AsReference.Uri"
+        }
+      }
+    },
+    "ClaimInfo": {
+      "schemaDefinition": "ClaimInfo",
+      "root": "entity.ClaimInfo",
+      "properties": {
+        "archiveState": {
+          "path": "ClaimInfo.ArchiveState",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "claim": {
+          "path": "ClaimInfo.Claim",
+          "mapper": "#/mappers/Claim"
+        },
+        "claimNumber": {
+          "path": "ClaimInfo.ClaimNumber"
+        },
+        "id": {
+          "path": "ClaimInfo.RestId"
+        },
+        "lossDate": {
+          "path": "ClaimInfo.LossDate"
+        },
+        "noticeDate": {
+          "path": "ClaimInfo.NoticeDate"
+        },
+        "policyNumber": {
+          "path": "ClaimInfo.PolicyNumber"
+        }
+      }
+    },
+    "ClaimReference": {
+      "schemaDefinition": "ClaimReference",
+      "root": "entity.Claim",
+      "properties": {
+        "claimNumber": {
+          "path": "Claim.ClaimNumber"
+        },
+        "displayName": {
+          "path": "Claim.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "Claim.RestId"
+        },
+        "jsonPath": {
+          "path": "Claim.RestV1_AsReference.JsonPath"
+        },
+        "type": {
+          "path": "Claim.RestV1_AsReference.Type"
+        },
+        "uri": {
+          "path": "Claim.RestV1_AsReference.Uri"
+        }
+      }
+    },
+    // Suppress warnings from validation
+    "ClaimSearchRequestAttributes": {
+      "schemaDefinition": "ClaimSearchRequestAttributes",
+      "root": "entity.ClaimSearchCriteria",
+      "properties": {
+        "claimNumber": {
+          "path": "ClaimSearchCriteria.ClaimNumber",
+          "predicate": "false"
+        },
+        "firstName": {
+          "path": "ClaimSearchCriteria.NameCriteria.FirstName",
+          "predicate": "false"
+        },
+        "lastName": {
+          "path": "ClaimSearchCriteria.NameCriteria.LastName",
+          "predicate": "false"
+        },
+        "nameSearchType": {
+          "path": "ClaimSearchCriteria.NameSearchType",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "false"
+        },
+        "policyNumber": {
+          "path": "ClaimSearchCriteria.PolicyNumber",
+          "predicate": "false"
+        }
+      }
+    },
+    "ClaimSearchResult": {
+      "schemaDefinition": "ClaimSearchResult",
+      "root": "entity.ClaimSearchView",
+      "properties": {
+        "adjusterName": {
+          "path": "ClaimSearchView.AssigneeDisplayString"
+        },
+        "claimId": {
+          "path": "ClaimSearchView.RestV1.ClaimRestId"
+        },
+        "claimNumber": {
+          "path": "ClaimSearchView.ClaimNumber"
+        },
+        "claimants": {
+          "path": "ClaimSearchView.ClaimantNames.sort()"
+        },
+        "insuredName": {
+          "path": "ClaimSearchView.Insured.RestV1_SafeDisplayName"
+        },
+        "lossDate": {
+          "path": "ClaimSearchView.LossDate"
+        },
+        "policyNumber": {
+          "path": "ClaimSearchView.PolicyNumber"
+        },
+        "status": {
+          "path": "ClaimSearchView.State",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "ClaimSearchResultWrapper": {
+      "schemaDefinition": "ClaimSearchResultWrapper",
+      "root": "gw.rest.core.cc.claim.v1.search.claims.ClaimSearchResultWrapper",
+      "properties": {
+        "adjusterName": {
+          "path": "ClaimSearchResultWrapper.AdjusterName"
+        },
+        "archiveState": {
+          "path": "ClaimSearchResultWrapper.ArchiveState",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "archived": {
+          "path": "ClaimSearchResultWrapper.Archived"
+        },
+        "archivedAdjuster": {
+          "path": "ClaimSearchResultWrapper.ArchivedAdjuster"
+        },
+        "assignedGroup": {
+          "path": "ClaimSearchResultWrapper.AssignedGroup"
+        },
+        "claimId": {
+          "path": "ClaimSearchResultWrapper.ClaimRestId"
+        },
+        "claimInfoId": {
+          "path": "ClaimSearchResultWrapper.ClaimInfoRestId"
+        },
+        "claimNumber": {
+          "path": "ClaimSearchResultWrapper.ClaimNumber"
+        },
+        "claimants": {
+          "path": "ClaimSearchResultWrapper.ClaimantNames"
+        },
+        "flagged": {
+          "path": "ClaimSearchResultWrapper.Flagged"
+        },
+        "futurePayments": {
+          "path": "ClaimSearchResultWrapper.FuturePayments",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "insuredName": {
+          "path": "ClaimSearchResultWrapper.InsuredName"
+        },
+        "lossDate": {
+          "path": "ClaimSearchResultWrapper.LossDate"
+        },
+        "paid": {
+          "path": "ClaimSearchResultWrapper.Paid",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "policyNumber": {
+          "path": "ClaimSearchResultWrapper.PolicyNumber"
+        },
+        "remainingReserves": {
+          "path": "ClaimSearchResultWrapper.RemainingReserves",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "status": {
+          "path": "ClaimSearchResultWrapper.ClaimState",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "ClaimSearchV2Attributes": {
+      "schemaDefinition": "ClaimSearchV2Attributes",
+      "root": "entity.ClaimSearchCriteria",
+      "properties": {
+        "archivedSearch": {
+          "path": "ClaimSearchCriteria.ArchivedSearch",
+          "predicate": "false"
+        },
+        "claimNumber": {
+          "path": "ClaimSearchCriteria.ClaimNumber",
+          "predicate": "false"
+        },
+        "companyName": {
+          "path": "ClaimSearchCriteria.NameCriteria.CompanyName",
+          "predicate": "false"
+        },
+        "firstName": {
+          "path": "ClaimSearchCriteria.NameCriteria.FirstName",
+          "predicate": "false"
+        },
+        "lastName": {
+          "path": "ClaimSearchCriteria.NameCriteria.LastName",
+          "predicate": "false"
+        },
+        "nameSearchType": {
+          "path": "ClaimSearchCriteria.NameSearchType",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "false"
+        },
+        "policyNumber": {
+          "path": "ClaimSearchCriteria.PolicyNumber",
+          "predicate": "false"
+        },
+        "taxId": {
+          "path": "ClaimSearchCriteria.NameCriteria.TaxId",
+          "predicate": "false"
+        }
+      }
+    },
+    // Suppress warnings from validation
+    "ClaimSolrSearchRequestAttributes": {
+      "schemaDefinition": "ClaimSolrSearchRequestAttributes",
+      "root": "entity.ClaimSearchCriteria",
+      "properties": {
+        "address": {
+          "path": "null as Address",
+          "mapper": "#/mappers/Address"
+        },
+        "name": {
+          "path": "null as String"
+        },
+        "nameSearchType": {
+          "path": "null as gw.entity.TypeKey",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "phoneNumber": {
+          "path": "null as String"
+        }
+      }
+    },
+    "ClaimSolrSearchResult": {
+      "schemaDefinition": "ClaimSolrSearchResult",
+      "root": "entity.FreeTextClaimSearchEntity",
+      "properties": {
+        "address": {
+          "path": "FreeTextClaimSearchEntity.Address"
+        },
+        "city": {
+          "path": "FreeTextClaimSearchEntity.City"
+        },
+        "claimId": {
+          "path": "FreeTextClaimSearchEntity.RestV1.ClaimRestId"
+        },
+        "claimNumber": {
+          "path": "FreeTextClaimSearchEntity.ClaimNumber"
+        },
+        "lossDate": {
+          "path": "FreeTextClaimSearchEntity.LossDate"
+        },
+        "name": {
+          "path": "FreeTextClaimSearchEntity.FullName"
+        },
+        "phoneNumber": {
+          "path": "FreeTextClaimSearchEntity.Phone"
+        },
+        "policyNumber": {
+          "path": "FreeTextClaimSearchEntity.PolicyNumber"
+        },
+        "postalCode": {
+          "path": "FreeTextClaimSearchEntity.PostalCode"
+        },
+        "rank": {
+          "path": "FreeTextClaimSearchEntity.Rank"
+        },
+        "reportedDate": {
+          "path": "FreeTextClaimSearchEntity.ReportedDate"
+        },
+        "roles": {
+          "path": "FreeTextClaimSearchEntity.Roles"
+        },
+        "score": {
+          "path": "FreeTextClaimSearchEntity.Score"
+        },
+        "state": {
+          "path": "FreeTextClaimSearchEntity.State",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "status": {
+          "path": "FreeTextClaimSearchEntity.Status"
+        }
+      }
+    },
+    "ClaimVehicle": {
+      "schemaDefinition": "Vehicle",
+      "root": "gw.rest.core.cc.claim.v1.claims.vehicles.ClaimVehicle",
+      "properties": {
+        "color": {
+          "path": "ClaimVehicle.Color"
+        },
+        "displayName": {
+          "path": "ClaimVehicle.DisplayName"
+        },
+        "id": {
+          "path": "ClaimVehicle.RestId"
+        },
+        "licensePlate": {
+          "path": "ClaimVehicle.LicensePlate"
+        },
+        "make": {
+          "path": "ClaimVehicle.Make"
+        },
+        "manufacturer": {
+          "path": "ClaimVehicle.Manufacturer",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "model": {
+          "path": "ClaimVehicle.Model"
+        },
+        "policyLabel": {
+          "path": "ClaimVehicle.PolicyLabel"
+        },
+        "policySystemId": {
+          "path": "ClaimVehicle.PolicySystemId"
+        },
+        "policyVehicle": {
+          "path": "ClaimVehicle.PolicyVehicle"
+        },
+        "state": {
+          "path": "ClaimVehicle.State",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "style": {
+          "path": "ClaimVehicle.Vehicle.Style",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "vin": {
+          "path": "ClaimVehicle.Vin"
+        },
+        "year": {
+          "path": "ClaimVehicle.Year"
+        }
+      }
+    },
+    "ContactRoleConstraint": {
+      "schemaDefinition": "ContactRoleConstraint",
+      "root": "gw.rest.core.cc.claim.v1.roleconstraints.config.ContactRoleConstraint",
+      "properties": {
+        "code": {
+          "path": "ContactRoleConstraint.Code"
+        },
+        "name": {
+          "path": "ContactRoleConstraint.Name"
+        },
+        "schemaConstraints": {
+          "path": "ContactRoleConstraint.RoleSchemaConstraints",
+          "mapper": "#/mappers/RoleSchemaConstraint"
+        },
+        "subtype": {
+          "path": "ContactRoleConstraint.Subtype"
+        }
+      }
+    },
+    "CovTerm": {
+      "schemaDefinition": "CovTerm",
+      "root": "entity.CovTerm",
+      "properties": {
+        "code": {
+          "path": "(CovTerm as ClassificationCovTerm).Code",
+          "predicate": "CovTerm typeis ClassificationCovTerm"
+        },
+        "covTermSubtype": {
+          "path": "CovTerm.Subtype"
+        },
+        "description": {
+          "path": "(CovTerm as ClassificationCovTerm).Description",
+          "predicate": "CovTerm typeis ClassificationCovTerm"
+        },
+        "financialAmount": {
+          "path": "(CovTerm as FinancialCovTerm).FinancialAmount",
+          "mapper": "#/mappers/CurrencyAmount",
+          "predicate": "CovTerm typeis FinancialCovTerm"
+        },
+        "id": {
+          "path": "CovTerm.RestId"
+        },
+        "numericValue": {
+          "path": "(CovTerm as NumericCovTerm).NumericValue",
+          "predicate": "CovTerm typeis NumericCovTerm"
+        },
+        "policySystemId": {
+          "path": "CovTerm.PolicySystemId"
+        },
+        "units": {
+          "path": "(CovTerm as NumericCovTerm).Units",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "CovTerm typeis NumericCovTerm"
+        }
+      }
+    },
+    "Coverage": {
+      "schemaDefinition": "Coverage",
+      "root": "entity.Coverage",
+      "properties": {
+        // Suppress warnings
+        "claimAggLimit": {
+          "path": "(Coverage as VehicleCoverage).ClaimAggLimit",
+          "mapper": "#/mappers/CurrencyAmount",
+          "predicate": "Coverage typeis VehicleCoverage"
+        },
+        "coinsurance": {
+          "path": "(Coverage as PropertyCoverage).Coinsurance",
+          "predicate": "Coverage typeis PropertyCoverage"
+        },
+        "covTerms": {
+          "path": "Coverage.RestV1.OrderedCovTerms",
+          "mapper": "#/mappers/CovTerm"
+        },
+        "coverageBasis": {
+          "path": "(Coverage as PropertyCoverage).CoverageBasis",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "Coverage typeis PropertyCoverage"
+        },
+        "coverageType": {
+          "path": "Coverage.Type",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "currency": {
+          "path": "Coverage.Currency",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "effectiveDate": {
+          "path": "Coverage.EffectiveDate"
+        },
+        "expirationDate": {
+          "path": "Coverage.ExpirationDate"
+        },
+        "exposureLimit": {
+          "path": "Coverage.ExposureLimit",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "id": {
+          "path": "Coverage.RestId"
+        },
+        "incidentLimit": {
+          "path": "Coverage.IncidentLimit",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "limitsIndicator": {
+          "path": "Coverage.LimitsIndicator",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "nonmedAggLimit": {
+          "path": "(Coverage as VehicleCoverage).NonmedAggLimit",
+          "mapper": "#/mappers/CurrencyAmount",
+          "predicate": "Coverage typeis VehicleCoverage"
+        },
+        "notes": {
+          "path": "Coverage.Notes"
+        },
+        "personAggLimit": {
+          "path": "(Coverage as VehicleCoverage).PersonAggLimit",
+          "mapper": "#/mappers/CurrencyAmount",
+          "predicate": "Coverage typeis VehicleCoverage"
+        },
+        "policySystemId": {
+          "path": "Coverage.PolicySystemId"
+        },
+        "replaceAggLimit": {
+          "path": "(Coverage as VehicleCoverage).ReplaceAggLimit",
+          "mapper": "#/mappers/CurrencyAmount",
+          "predicate": "Coverage typeis VehicleCoverage"
+        },
+        "state": {
+          "path": "Coverage.State",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "CoverageReference": {
+      "schemaDefinition": "UpdatablePolicyObjectReference",
+      "root": "entity.Coverage",
+      "properties": {
+        "displayName": {
+          "path": "Coverage.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "Coverage.RestId"
+        },
+        "jsonPath": {
+          "path": "Coverage.RestV1_AsReference.JsonPath"
+        },
+        "policySystemId": {
+          "path": "Coverage.PolicySystemId"
+        },
+        // Suppress warnings
+        "refid": {
+          "path": "null as String",
+          "predicate": "false"
+        },
+        "type": {
+          "path": "Coverage.RestV1_AsReference.Type"
+        },
+        "uri": {
+          "path": "Coverage.RestV1_AsReference.Uri"
+        }
+      }
+    },
+    "Deductible": {
+      "schemaDefinition": "Deductible",
+      "root": "entity.Deductible",
+      "properties": {
+        "amount": {
+          "path": "Deductible.Amount",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "amountApplied": {
+          "path": "Deductible.AmountApplied_Core",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "amountRemaining": {
+          "path": "Deductible.AmountRemaining_Core",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "waived": {
+          "path": "Deductible.Waived"
+        }
+      }
+    },
+    "Endorsement": {
+      "schemaDefinition": "Endorsement",
+      "root": "entity.Endorsement",
+      "properties": {
+        "comments": {
+          "path": "Endorsement.Comments"
+        },
+        "description": {
+          "path": "Endorsement.Description"
+        },
+        "effectiveDate": {
+          "path": "Endorsement.EffectiveDate"
+        },
+        "expirationDate": {
+          "path": "Endorsement.ExpirationDate"
+        },
+        "formNumber": {
+          "path": "Endorsement.FormNumber"
+        },
+        "id": {
+          "path": "Endorsement.RestId"
+        }
+      }
+    },
+    "Exposure": {
+      "schemaDefinition": "Exposure",
+      "root": "entity.Exposure",
+      "properties": {
+        "allValidationLevelsReached": {
+          "path": "Exposure.RestV1.AllValidationLevelsReached",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        // Suppress warnings
+        "assignedByUser": {
+          "path": "Exposure.AssignedByUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignedGroup": {
+          "path": "Exposure.AssignedGroup.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignedQueue": {
+          "path": "Exposure.AssignedQueue.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignedUser": {
+          "path": "Exposure.AssignedUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignmentStatus": {
+          "path": "Exposure.AssignmentStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "autopilotStatus": {
+          "path": "Exposure.AutopilotStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "claimOrder": {
+          "path": "Exposure.ClaimOrder"
+        },
+        "claimantType": {
+          "path": "Exposure.ClaimantType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "closeDate": {
+          "path": "Exposure.CloseDate"
+        },
+        "closedOutcome": {
+          "path": "Exposure.ClosedOutcome",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "contactPermitted": {
+          "path": "Exposure.ContactPermitted"
+        },
+        "coverage": {
+          "path": "Exposure.Coverage",
+          "mapper": "#/mappers/CoverageReference"
+        },
+        "coverageSubtype": {
+          "path": "Exposure.CoverageSubType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "createdVia": {
+          "path": "Exposure.CreatedVia",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "deductible": {
+          "path": "Exposure.Coverage.ClaimDeductible",
+          "mapper": "#/mappers/Deductible"
+        },
+        "fixedPropertyIncident": {
+          "path": "(Exposure.getTypedIncident('FixedPropertyIncident') as FixedPropertyIncident).RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference",
+          "predicate": "Exposure.Incident.Subtype == typekey.Incident.TC_FIXEDPROPERTYINCIDENT"
+        },
+        "id": {
+          "path": "Exposure.RestId"
+        },
+        "injuryIncident": {
+          "path": "(Exposure.getTypedIncident('InjuryIncident') as InjuryIncident).RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "jurisdiction": {
+          "path": "Exposure.JurisdictionState",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "lossCategory": {
+          "path": "Exposure.LossCategory",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "lossParty": {
+          "path": "Exposure.LossParty",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "otherCoverage": {
+          "path": "Exposure.OtherCoverage"
+        },
+        "otherStructureIncident": {
+          "path": "(Exposure.getTypedIncident('OtherStructureIncident') as OtherStructureIncident).RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference",
+          "predicate": "Exposure.Incident.Subtype == typekey.Incident.TC_OTHERSTRUCTUREINCIDENT"
+        },
+        "primaryCoverage": {
+          "path": "Exposure.PrimaryCoverage",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "progress": {
+          "path": "Exposure.Progress",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "propertyContentsIncident": {
+          "path": "(Exposure.getTypedIncident('PropertyContentsIncident') as PropertyContentsIncident).RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference",
+          "predicate": "Exposure.Incident.Subtype == typekey.Incident.TC_PROPERTYCONTENTSINCIDENT"
+        },
+        "reopenDate": {
+          "path": "Exposure.ReOpenDate"
+        },
+        "reopenedReason": {
+          "path": "Exposure.ReopenedReason",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "securityLevel": {
+          "path": "Exposure.SecurityLevel",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "segment": {
+          "path": "Exposure.Segment",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "state": {
+          "path": "Exposure.State",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "strategy": {
+          "path": "Exposure.Strategy",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "tier": {
+          "path": "Exposure.ExposureTier",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "type": {
+          "path": "Exposure.ExposureType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "validationLevel": {
+          "path": "Exposure.ValidationLevel",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "vehicleIncident": {
+          "path": "(Exposure.getTypedIncident('VehicleIncident') as VehicleIncident).RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        }
+      }
+    },
+    "ExposureAssignee": {
+      "schemaDefinition": "ExposureAssignee",
+      "root": "gw.api.assignment.Assignee",
+      "properties": {
+        "autoAssign": {
+          "path": "Assignee.RestV1_AutoAssign"
+        },
+        "claimOwner": {
+          "path": "Assignee.RestV1_ClaimOwner"
+        },
+        "groupId": {
+          "path": "Assignee.RestV1_GroupId"
+        },
+        "name": {
+          "path": "Assignee.RestV1_Name"
+        },
+        "userId": {
+          "path": "Assignee.RestV1_UserId"
+        }
+      }
+    },
+    "FixedPropertyIncident": {
+      "schemaDefinition": "FixedPropertyIncident",
+      "root": "entity.FixedPropertyIncident",
+      "properties": {
+        "automationPath": {
+          "path": "FixedPropertyIncident.AutomationPath",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "description": {
+          "path": "FixedPropertyIncident.Description"
+        },
+        "id": {
+          "path": "FixedPropertyIncident.RestId"
+        },
+        "location": {
+          "path": "FixedPropertyIncident.Property",
+          "mapper": "#/mappers/PolicyLocation"
+        },
+        "lossParty": {
+          "path": "FixedPropertyIncident.LossParty",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "occupancyType": {
+          "path": "FixedPropertyIncident.OccupancyType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "severity": {
+          "path": "FixedPropertyIncident.Severity",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "InjuryBodyPart": {
+      "schemaDefinition": "InjuryBodyPart",
+      "root": "entity.BodyPartDetails",
+      "properties": {
+        "detailedBodyPart": {
+          "path": "BodyPartDetails.DetailedBodyPart",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "detailedBodyPartDesc": {
+          "path": "BodyPartDetails.DetailedBodyPartDesc",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "id": {
+          "path": "BodyPartDetails.RestId"
+        },
+        "impairmentPercentage": {
+          "path": "BodyPartDetails.ImpairmentPercentage"
+        },
+        "ordering": {
+          "path": "BodyPartDetails.Ordering"
+        },
+        "primaryBodyPart": {
+          "path": "BodyPartDetails.PrimaryBodyPart",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "sideOfBody": {
+          "path": "BodyPartDetails.SideOfBody",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "InjuryIncident": {
+      "schemaDefinition": "InjuryIncident",
+      "root": "entity.InjuryIncident",
+      "properties": {
+        "ambulanceUsed": {
+          "path": "InjuryIncident.AmbulanceUsed"
+        },
+        "automationPath": {
+          "path": "InjuryIncident.AutomationPath",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "bodyParts": {
+          "path": "InjuryIncident.OrderedBodyParts",
+          "mapper": "#/mappers/InjuryBodyPart"
+        },
+        "dateOfDeath": {
+          "path": "InjuryIncident.DateOfDeath"
+        },
+        "description": {
+          "path": "InjuryIncident.Description"
+        },
+        "detailedInjuryType": {
+          "path": "InjuryIncident.DetailedInjuryType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "disabledDueToAccident": {
+          "path": "InjuryIncident.DisabledDueToAccident",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "generalInjuryType": {
+          "path": "InjuryIncident.GeneralInjuryType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "id": {
+          "path": "InjuryIncident.RestId"
+        },
+        "lossParty": {
+          "path": "InjuryIncident.LossParty",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "lostWages": {
+          "path": "InjuryIncident.LostWages"
+        },
+        "severity": {
+          "path": "InjuryIncident.Severity",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "treatmentType": {
+          "path": "InjuryIncident.MedicalTreatmentType",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "IntakeInteraction": {
+      "schemaDefinition": "IntakeInteraction",
+      "root": "entity.IntakeInteraction",
+      "properties": {
+        "claimContact": {
+          "path": "IntakeInteraction.ClaimContact.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "claimSnapshotURL": {
+          "path": "IntakeInteraction.ClaimSnapshotURL"
+        },
+        "createTime": {
+          "path": "IntakeInteraction.CreateTime"
+        },
+        "description": {
+          "path": "IntakeInteraction.Description"
+        },
+        "id": {
+          "path": "IntakeInteraction.RestId"
+        },
+        "intakeId": {
+          "path": "IntakeInteraction.IntakeId"
+        },
+        "intakeInputs": {
+          "path": "IntakeInteraction.IntakeInputsJson"
+        },
+        "intakeResults": {
+          "path": "IntakeInteraction.IntakeResultsJson"
+        },
+        "relatedEntity": {
+          "path": "IntakeInteraction.RelatedEntity.RestV1_AsClaimCenterReference",
+          "mapper": "#/mappers/GenericRelationResource"
+        },
+        "status": {
+          "path": "IntakeInteraction.Status",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "LocationReference": {
+      "schemaDefinition": "#/definitions/PolicyObjectReference",
+      "root": "entity.PolicyLocation",
+      "properties": {
+        "displayName": {
+          "path": "PolicyLocation.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "PolicyLocation.RestId"
+        },
+        "jsonPath": {
+          "path": "PolicyLocation.RestV1_AsReference.JsonPath"
+        },
+        "policyLabel": {
+          "path": "PolicyLocation.RestV1_SafeDisplayName"
+        },
+        "policySystemId": {
+          "path": "PolicyLocation.PolicySystemId"
+        },
+        "type": {
+          "path": "PolicyLocation.RestV1_AsReference.Type"
+        },
+        "uri": {
+          "path": "PolicyLocation.RestV1_AsReference.Uri"
+        }
+      }
+    },
+    "OtherStructureIncident": {
+      "schemaDefinition": "OtherStructureIncident",
+      "root": "entity.OtherStructureIncident",
+      "properties": {
+        "description": {
+          "path": "OtherStructureIncident.Description"
+        },
+        "fencesDamaged": {
+          "path": "OtherStructureIncident.FencesDamaged"
+        },
+        "id": {
+          "path": "OtherStructureIncident.RestId"
+        },
+        "lossParty": {
+          "path": "OtherStructureIncident.LossParty",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "severity": {
+          "path": "OtherStructureIncident.Severity",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "ParentService": {
+      "schemaDefinition": "CodeReference",
+      "root": "entity.SpecialistService",
+      "properties": {
+        "code": {
+          "path": "SpecialistService.Code"
+        },
+        "displayName": {
+          "path": "SpecialistService.RestV1_SafeDisplayName"
+        }
+      }
+    },
+    "Payee": {
+      "schemaDefinition": "Payee",
+      "root": "entity.CheckPayee",
+      "properties": {
+        "contact": {
+          "path": "CheckPayee.ClaimContact",
+          "mapper": "#/mappers/ClaimContactReference"
+        },
+        "id": {
+          "path": "CheckPayee.RestId"
+        },
+        "payeeType": {
+          "path": "CheckPayee.PayeeType",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "Policy": {
+      "schemaDefinition": "Policy",
+      "root": "entity.Policy",
+      "properties": {
+        "accountNumber": {
+          "path": "Policy.AccountNumber"
+        },
+        "assignedRisk": {
+          "path": "Policy.AssignedRisk"
+        },
+        "cancellationDate": {
+          "path": "Policy.CancellationDate"
+        },
+        "currency": {
+          "path": "Policy.Currency",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "effectiveDate": {
+          "path": "Policy.EffectiveDate"
+        },
+        "expirationDate": {
+          "path": "Policy.ExpirationDate"
+        },
+        "financialInterests": {
+          "path": "Policy.FinancialInterests"
+        },
+        "foreignCoverage": {
+          "path": "Policy.ForeignCoverage"
+        },
+        "id": {
+          "path": "Policy.RestId"
+        },
+        "notes": {
+          "path": "Policy.Notes"
+        },
+        "originalEffectiveDate": {
+          "path": "Policy.OrigEffectiveDate"
+        },
+        "policyLocations": {
+          "path": "Policy.RestV1.PolicyLocationsOrdered",
+          "mapper": "#/mappers/LocationReference"
+        },
+        "policyNumber": {
+          "path": "Policy.PolicyNumber"
+        },
+        "policyType": {
+          "path": "Policy.PolicyType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "producerCode": {
+          "path": "Policy.ProducerCode"
+        },
+        "serviceTier": {
+          "path": "Policy.CustomerServiceTier",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "status": {
+          "path": "Policy.Status",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "underwritingCo": {
+          "path": "Policy.UnderwritingCo",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "underwritingGroup": {
+          "path": "Policy.UnderwritingGroup",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "verifiedPolicy": {
+          "path": "Policy.Verified"
+        }
+      }
+    },
+    "PolicyLocation": {
+      "schemaDefinition": "PolicyLocation",
+      "root": "entity.PolicyLocation",
+      "properties": {
+        "address": {
+          "path": "PolicyLocation.RestV1.PolicyLocationAddress",
+          "mapper": "#/mappers/ClaimAddress"
+        },
+        "displayName": {
+          "path": "PolicyLocation.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "PolicyLocation.RestId"
+        },
+        "locationNumber": {
+          "path": "PolicyLocation.LocationNumber"
+        },
+        "notes": {
+          "path": "PolicyLocation.Notes"
+        },
+        "policySystemId": {
+          "path": "PolicyLocation.PolicySystemId"
+        },
+        "primaryLocation": {
+          "path": "PolicyLocation.PrimaryLocation"
+        }
+      }
+    },
+    "PropertyContentsIncident": {
+      "schemaDefinition": "PropertyContentsIncident",
+      "root": "entity.PropertyContentsIncident",
+      "properties": {
+        "description": {
+          "path": "PropertyContentsIncident.Description"
+        },
+        "id": {
+          "path": "PropertyContentsIncident.RestId"
+        },
+        "location": {
+          "path": "PropertyContentsIncident.PropertyLocation",
+          "mapper": "#/mappers/PolicyLocation"
+        },
+        "lossParty": {
+          "path": "PropertyContentsIncident.LossParty",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "severity": {
+          "path": "PropertyContentsIncident.Severity",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "RecoveryReserveSet": {
+      "schemaDefinition": "RecoveryReserveSet",
+      "root": "entity.RecoveryReserveSet",
+      "properties": {
+        "approvalDate": {
+          "path": "RecoveryReserveSet.ApprovalDate"
+        },
+        "approvalStatus": {
+          "path": "RecoveryReserveSet.ApprovalStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "createTime": {
+          "path": "RecoveryReserveSet.CreateTime"
+        },
+        "createdVia": {
+          "path": "RecoveryReserveSet.CreatedVia",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "id": {
+          "path": "RecoveryReserveSet.RestId"
+        },
+        "recoveryReserves": {
+          "path": "gw.rest.core.cc.claim.v1.claims.ClaimRestV1Methods.sortTransactions(RecoveryReserveSet.RecoveryReserves.toList())*.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "recoveryReservesToWrite": {
+          "path": "null as entity.RecoveryReserve[]",
+          "mapper": "#/mappers/Transaction"
+        },
+        "requestingUser": {
+          "path": "RecoveryReserveSet.RequestingUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        }
+      }
+    },
+    "RecoverySet": {
+      "schemaDefinition": "RecoverySet",
+      "root": "entity.RecoverySet",
+      "properties": {
+        "approvalDate": {
+          "path": "RecoverySet.ApprovalDate"
+        },
+        "approvalStatus": {
+          "path": "RecoverySet.ApprovalStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "createTime": {
+          "path": "RecoverySet.CreateTime"
+        },
+        "createdVia": {
+          "path": "RecoverySet.CreatedVia",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "id": {
+          "path": "RecoverySet.RestId"
+        },
+        "recoveries": {
+          "path": "gw.rest.core.cc.claim.v1.claims.ClaimRestV1Methods.sortTransactions(RecoverySet.Recoveries.toList())*.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "recoveriesToWrite": {
+          "path": "null as entity.Recovery[]",
+          "mapper": "#/mappers/Transaction"
+        },
+        "requestingUser": {
+          "path": "RecoverySet.RequestingUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        }
+      }
+    },
+    "ReserveSet": {
+      "schemaDefinition": "ReserveSet",
+      "root": "entity.ReserveSet",
+      "properties": {
+        "approvalDate": {
+          "path": "ReserveSet.ApprovalDate"
+        },
+        "approvalStatus": {
+          "path": "ReserveSet.ApprovalStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "createTime": {
+          "path": "ReserveSet.CreateTime"
+        },
+        "createdVia": {
+          "path": "ReserveSet.CreatedVia",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "id": {
+          "path": "ReserveSet.RestId"
+        },
+        "requestingUser": {
+          "path": "ReserveSet.RequestingUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "reserves": {
+          "path": "gw.rest.core.cc.claim.v1.claims.ClaimRestV1Methods.sortTransactions(ReserveSet.Reserves.toList())*.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "reservesToWrite": {
+          "path": "null as entity.Reserve[]",
+          "mapper": "#/mappers/Transaction"
+        }
+      }
+    },
+    "RoleSchemaConstraint": {
+      "schemaDefinition": "RoleSchemaConstraint",
+      "root": "gw.rest.core.cc.claim.v1.roleconstraints.config.RoleSchemaConstraint",
+      "properties": {
+        "constraints": {
+          "path": "RoleSchemaConstraint.OrderedSchemaConstraints",
+          "mapper": "#/mappers/SchemaConstraint"
+        },
+        "exceptionSubtypes": {
+          "path": "RoleSchemaConstraint.OrderedExceptionSubtypes"
+        },
+        "schema": {
+          "path": "RoleSchemaConstraint.Schema"
+        }
+      }
+    },
+    "SchemaConstraint": {
+      "schemaDefinition": "SchemaConstraint",
+      "root": "gw.rest.core.cc.claim.v1.roleconstraints.config.RoleSchemaConstraint.SchemaConstraint",
+      "properties": {
+        "additionalInfoList": {
+          "path": "SchemaConstraint.OrderedAdditionalInfoList",
+          "mapper": "#/mappers/AdditionalInfo"
+        },
+        "constraintType": {
+          "path": "SchemaConstraint.ConstraintType"
+        }
+      }
+    },
+    "ServiceRequest": {
+      "schemaDefinition": "ServiceRequest",
+      "root": "entity.ServiceRequest",
+      "properties": {
+        "assignedGroup": {
+          "path": "ServiceRequest.AssignedGroup.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignedUser": {
+          "path": "ServiceRequest.AssignedUser.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "assignmentDate": {
+          "path": "ServiceRequest.AssignmentDate"
+        },
+        "assignmentDateTime": {
+          "path": "ServiceRequest.AssignmentDate"
+        },
+        "canceledReason": {
+          "path": "ServiceRequest.CanceledReasonGw"
+        },
+        "claim": {
+          "path": "ServiceRequest.Claim",
+          "mapper": "#/mappers/ClaimReference"
+        },
+        "createTime": {
+          "path": "ServiceRequest.CreateTime"
+        },
+        "expectedQuoteCompletionDate": {
+          "path": "ServiceRequest.ExpectedQuoteCompletionDateGw"
+        },
+        "expectedQuoteCompletionDateTime": {
+          "path": "ServiceRequest.ExpectedQuoteCompletionDateGw"
+        },
+        "expectedServiceCompletionDate": {
+          "path": "ServiceRequest.ExpectedServiceCompletionDateGw"
+        },
+        "expectedServiceCompletionDateTime": {
+          "path": "ServiceRequest.ExpectedServiceCompletionDateGw"
+        },
+        "exposure": {
+          "path": "ServiceRequest.ExposureGw.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "id": {
+          "path": "ServiceRequest.RestId"
+        },
+        "incident": {
+          "path": "ServiceRequest.IncidentGw.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "instruction": {
+          "path": "ServiceRequest.Instruction",
+          "mapper": "#/mappers/ServiceRequestInstruction"
+        },
+        "kind": {
+          "path": "ServiceRequest.Kind",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "latestQuote": {
+          "path": "ServiceRequest.LatestQuote",
+          "mapper": "#/mappers/ServiceRequestStatement"
+        },
+        "nextStep": {
+          "path": "ServiceRequest.RestV1.NextAction",
+          "mapper": "#/mappers/ServiceRequestAction"
+        },
+        "progress": {
+          "path": "ServiceRequest.Progress",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "quoteStatus": {
+          "path": "ServiceRequest.QuoteStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "referenceNumber": {
+          "path": "ServiceRequest.ServiceRequestReferenceNumberGw"
+        },
+        "requestedQuoteCompletionDate": {
+          "path": "ServiceRequest.RequestedQuoteCompletionDateGw"
+        },
+        "requestedQuoteCompletionDateTime": {
+          "path": "ServiceRequest.RequestedQuoteCompletionDateGw"
+        },
+        "requestedServiceCompletionDate": {
+          "path": "ServiceRequest.RequestedServiceCompletionDateGw"
+        },
+        "requestedServiceCompletionDateTime": {
+          "path": "ServiceRequest.RequestedServiceCompletionDateGw"
+        },
+        "serviceRequestNumber": {
+          "path": "ServiceRequest.ServiceRequestNumber"
+        },
+        "specialist": {
+          "path": "ServiceRequest.Specialist?.RestV1_getMatchingClaimContact(ServiceRequest.Claim).RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "specialistCommMethod": {
+          "path": "ServiceRequest.SpecialistCommMethodGw",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "tier": {
+          "path": "ServiceRequest.Tier",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "ServiceRequestAction": {
+      "schemaDefinition": "ServiceRequestAction",
+      "root": "gw.core.vendormanagement.servicerequeststate.ActionDefinition",
+      "properties": {
+        "defaultOperation": {
+          "path": "ActionDefinition.DefaultOperation.Code"
+        },
+        "name": {
+          "path": "ActionDefinition.NextAction.ActionName"
+        }
+      }
+    },
+    "ServiceRequestAssignee": {
+      "schemaDefinition": "ServiceRequestAssignee",
+      "root": "gw.api.assignment.Assignee",
+      "properties": {
+        "autoAssign": {
+          "path": "Assignee.RestV1_AutoAssign"
+        },
+        "claimOwner": {
+          "path": "Assignee.RestV1_ClaimOwner"
+        },
+        "groupId": {
+          "path": "Assignee.RestV1_GroupId"
+        },
+        "name": {
+          "path": "Assignee.RestV1_Name"
+        },
+        "userId": {
+          "path": "Assignee.RestV1_UserId"
+        }
+      }
+    },
+    "ServiceRequestInstruction": {
+      "schemaDefinition": "ServiceRequestInstruction",
+      "root": "entity.ServiceRequestInstruction",
+      "properties": {
+        "customer": {
+          "path": "ServiceRequestInstruction.RestV1.CustomerClaimContact",
+          "mapper": "#/mappers/ClaimContactReference"
+        },
+        "id": {
+          "path": "ServiceRequestInstruction.RestId"
+        },
+        "instructionText": {
+          "path": "ServiceRequestInstruction.InstructionTextGw"
+        },
+        "serviceAddress": {
+          "path": "ServiceRequestInstruction.RestV1.ServiceAddressWrapper",
+          "mapper": "#/mappers/ClaimAddress"
+        },
+        "services": {
+          "path": "ServiceRequestInstruction.RestV1.ServicesOrdered",
+          "mapper": "#/mappers/SpecialistService"
+        }
+      }
+    },
+    "ServiceRequestInvoiceOperationContext": {
+      "schemaDefinition": "ServiceRequestInvoiceOperationContext",
+      "root": "gw.core.vendormanagement.servicerequeststate.ServiceRequestInvoiceOperationContext",
+      "properties": {
+        "reason": {
+          "path": "ServiceRequestInvoiceOperationContext.Reason",
+          "predicate": "false"
+        }
+      }
+    },
+    "ServiceRequestInvoicePayInfo": {
+      "schemaDefinition": "ServiceRequestInvoicePayInfo",
+      "root": "gw.rest.core.cc.claim.v1.servicerequests.invoices.ServiceRequestInvoicePayInfo",
+      "properties": {
+        "check": {
+          "path": "ServiceRequestInvoicePayInfo.Check.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference",
+          "predicate": "false"
+        },
+        "operationContext": {
+          "path": "ServiceRequestInvoicePayInfo.OperationContext",
+          "mapper": "#/mappers/ServiceRequestInvoiceOperationContext",
+          "predicate": "false"
+        }
+      }
+    },
+    "ServiceRequestOperationContext": {
+      "schemaDefinition": "ServiceRequestOperationContext",
+      "root": "gw.core.vendormanagement.servicerequeststate.ServiceRequestOperationContext",
+      "properties": {
+        "expectedCompletionDate": {
+          "path": "ServiceRequestOperationContext.ExpectedCompletionDate",
+          "predicate": "false"
+        },
+        "originalDate": {
+          "path": "ServiceRequestOperationContext.OriginalDate",
+          "predicate": "false"
+        },
+        "reason": {
+          "path": "ServiceRequestOperationContext.Reason",
+          "predicate": "false"
+        },
+        "requestedCompletionDate": {
+          "path": "ServiceRequestOperationContext.RequestedCompletionDate",
+          "predicate": "false"
+        },
+        "statement": {
+          "path": "ServiceRequestOperationContext.Statement",
+          "mapper": "#/mappers/ServiceRequestStatement",
+          "predicate": "false"
+        }
+      }
+    },
+    "ServiceRequestReference": {
+      "schemaDefinition": "ServiceRequestReference",
+      "root": "entity.ServiceRequest",
+      "properties": {
+        "displayName": {
+          "path": "ServiceRequest.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "ServiceRequest.RestId"
+        },
+        "jsonPath": {
+          "path": "ServiceRequest.RestV1_AsReference.JsonPath"
+        },
+        "referenceNumber": {
+          "path": "ServiceRequest.ServiceRequestReferenceNumberGw"
+        },
+        "serviceRequestNumber": {
+          "path": "ServiceRequest.ServiceRequestNumber"
+        },
+        "type": {
+          "path": "ServiceRequest.RestV1_AsReference.Type"
+        },
+        "uri": {
+          "path": "ServiceRequest.RestV1_AsReference.Uri"
+        }
+      }
+    },
+    "ServiceRequestSimpleOperationContext": {
+      "schemaDefinition": "ServiceRequestSimpleOperationContext",
+      "root": "gw.core.vendormanagement.servicerequeststate.ServiceRequestOperationContext",
+      "properties": { }
+    },
+    "ServiceRequestStatement": {
+      "schemaDefinition": "ServiceRequestStatement",
+      "root": "entity.ServiceRequestStatement",
+      "properties": {
+        "approvalDate": {
+          "path": "ServiceRequestStatement.ApprovalDate"
+        },
+        "approvedBy": {
+          "path": "ServiceRequestStatement.ApprovedBy.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "creationTime": {
+          "path": "ServiceRequestStatement.StatementCreationTime"
+        },
+        "declinedReason": {
+          "path": "ServiceRequestStatement.DeclinedReason"
+        },
+        "description": {
+          "path": "ServiceRequestStatement.Description"
+        },
+        "expectedDaysToPerformService": {
+          "path": "ServiceRequestStatement typeis ServiceRequestQuote ? (ServiceRequestStatement as ServiceRequestQuote).ExpectedDaysToPerformService : null"
+        },
+        "id": {
+          "path": "ServiceRequestStatement.RestId"
+        },
+        "lineItems": {
+          "path": "ServiceRequestStatement.RestV1.LineItemsOrdered",
+          "mapper": "#/mappers/ServiceRequestStatementLineItem"
+        },
+        "operationContext": {
+          "path": "null as gw.core.vendormanagement.servicerequeststate.ServiceRequestOperationContext",
+          "mapper": "#/mappers/ServiceRequestSimpleOperationContext",
+          "predicate": "false"
+        },
+        "paymentDate": {
+          "path": "(ServiceRequestStatement as ServiceRequestInvoice).PaymentDate",
+          "predicate": "ServiceRequestStatement typeis ServiceRequestInvoice"
+        },
+        "paymentDateTime": {
+          "path": "(ServiceRequestStatement as ServiceRequestInvoice).PaymentDate",
+          "predicate": "ServiceRequestStatement typeis ServiceRequestInvoice"
+        },
+        "referenceNumber": {
+          "path": "ServiceRequestStatement.ReferenceNumber"
+        },
+        "source": {
+          "path": "ServiceRequestStatement.Source",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "status": {
+          "path": "(ServiceRequestStatement as ServiceRequestInvoice).Status",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "ServiceRequestStatement typeis ServiceRequestInvoice"
+        },
+        "subtype": {
+          "path": "ServiceRequestStatement.Subtype",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "total": {
+          "path": "ServiceRequestStatement.Amount",
+          "mapper": "#/mappers/CurrencyAmount"
+        }
+      }
+    },
+    "ServiceRequestStatementLineItem": {
+      "schemaDefinition": "ServiceRequestStatementLineItem",
+      "root": "entity.ServiceRequestStatementLineItem",
+      "properties": {
+        "amount": {
+          "path": "ServiceRequestStatementLineItem.Amount",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "category": {
+          "path": "ServiceRequestStatementLineItem.Category",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "description": {
+          "path": "ServiceRequestStatementLineItem.Description"
+        },
+        "id": {
+          "path": "ServiceRequestStatementLineItem.RestId"
+        }
+      }
+    },
+    "SpecialistService": {
+      "schemaDefinition": "SpecialistService",
+      "root": "entity.SpecialistService",
+      "properties": {
+        "active": {
+          "path": "SpecialistService.Active"
+        },
+        "code": {
+          "path": "SpecialistService.Code"
+        },
+        "description": {
+          "path": "SpecialistService.Description"
+        },
+        "id": {
+          "path": "SpecialistService.RestId"
+        },
+        "name": {
+          "path": "SpecialistService.Name"
+        },
+        "parent": {
+          "path": "SpecialistService.Parent",
+          "mapper": "#/mappers/ParentService"
+        }
+      }
+    },
+    "Transaction": {
+      "schemaDefinition": "Transaction",
+      "root": "entity.Transaction",
+      "properties": {
+        "bookingDate": {
+          "path": "Transaction.BookingDate"
+        },
+        "claimToReportingExchangeRate": {
+          "path": "Transaction.ClaimToReportingExchangeRate",
+          "mapper": "#/mappers/TransactionExchangeRate",
+          "predicate": "Transaction.RestV1.IsMultiCurrencyTransaction"
+        },
+        "comments": {
+          "path": "Transaction.Comments"
+        },
+        "coverage": {
+          "path": "Transaction.Exposure.PrimaryCoverage",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "createTime": {
+          "path": "Transaction.CreateTime"
+        },
+        "createdVia": {
+          "path": "Transaction.TransactionSet.CreatedVia",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "currency": {
+          "path": "Transaction.Currency",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "eroding": {
+          "path": "(Transaction as Payment).ErodesReserves",
+          "predicate": "Transaction typeis Payment"
+        },
+        "id": {
+          "path": "Transaction.RestId"
+        },
+        "lineItems": {
+          "path": "Transaction.RestV1.LineItemsOrdered",
+          "mapper": "#/mappers/TransactionLineItem"
+        },
+        "paymentType": {
+          "path": "(Transaction as Payment).PaymentType",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "Transaction typeis Payment"
+        },
+        "reserveLine": {
+          "path": "Transaction",
+          "mapper": "#/mappers/TransactionCoding"
+        },
+        "status": {
+          "path": "Transaction.Status",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "subtype": {
+          "path": "Transaction.Subtype",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "transToClaimExchangeRate": {
+          "path": "Transaction.TransToClaimExchangeRate",
+          "mapper": "#/mappers/TransactionExchangeRate",
+          "predicate": "Transaction.RestV1.IsMultiCurrencyTransaction"
+        },
+        "transToReservingExchangeRate": {
+          "path": "Transaction.TransToReservingExchangeRate",
+          "mapper": "#/mappers/TransactionExchangeRate",
+          "predicate": "Transaction.RestV1.IsMultiCurrencyTransaction"
+        }
+      }
+    },
+    "TransactionCoding": {
+      "schemaDefinition": "TransactionCoding",
+      "root": "entity.Transaction",
+      "properties": {
+        "costCategory": {
+          "path": "Transaction.CostCategory",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "costType": {
+          "path": "Transaction.CostType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "exposure": {
+          "path": "Transaction.Exposure.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "recoveryCategory": {
+          "path": "Transaction.RestV1.RecoveryCategory",
+          "mapper": "#/mappers/TypeKeyReference",
+          "predicate": "Transaction typeis Recovery || Transaction typeis RecoveryReserve"
+        },
+        "reservingCurrency": {
+          "path": "Transaction.ReservingCurrency",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "TransactionExchangeRate": {
+      "schemaDefinition": "TransactionExchangeRate",
+      "root": "entity.ExchangeRate",
+      "properties": {
+        "description": {
+          "path": "ExchangeRate.ExchangeRateSet.Description"
+        },
+        "market": {
+          "path": "ExchangeRate.ExchangeRateSet.MarketRates"
+        },
+        "rate": {
+          "path": "ExchangeRate.Rate"
+        }
+      }
+    },
+    "TransactionLineItem": {
+      "schemaDefinition": "TransactionLineItem",
+      "root": "entity.TransactionLineItem",
+      "properties": {
+        "claimAmount": {
+          "path": "TransactionLineItem.ClaimAmount",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "comments": {
+          "path": "TransactionLineItem.Comments"
+        },
+        "id": {
+          "path": "TransactionLineItem.RestId"
+        },
+        "lineCategory": {
+          "path": "TransactionLineItem.LineCategory",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "reportingAmount": {
+          "path": "TransactionLineItem.ReportingAmount",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "reservingAmount": {
+          "path": "TransactionLineItem.ReservingAmount",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "transactionAmount": {
+          "path": "TransactionLineItem.TransactionAmount",
+          "mapper": "#/mappers/CurrencyAmount"
+        }
+      }
+    },
+    "UnverifiedPolicyLocation": {
+      "schemaDefinition": "UnverifiedPolicyLocation",
+      "root": "entity.PolicyLocation",
+      "properties": {
+        "address": {
+          "path": "PolicyLocation.Address",
+          "mapper": "#/mappers/Address"
+        },
+        "displayName": {
+          "path": "PolicyLocation.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "PolicyLocation.RestId"
+        },
+        "locationNumber": {
+          "path": "PolicyLocation.LocationNumber"
+        },
+        "notes": {
+          "path": "PolicyLocation.Notes"
+        },
+        "policySystemId": {
+          "path": "PolicyLocation.PolicySystemId"
+        },
+        "primaryLocation": {
+          "path": "PolicyLocation.PrimaryLocation"
+        }
+      }
+    },
+    "ValidationIssue": {
+      "schemaDefinition": "ValidationIssue",
+      "root": "gw.api.validation.ValidationIssue",
+      "properties": {
+        "field": {
+          "path": "(ValidationIssue as gw.api.validation.FieldValidation).FieldName.uncapitalize()",
+          "predicate": "ValidationIssue typeis gw.api.validation.FieldValidation"
+        },
+        "id": {
+          "path": "gw.api.modules.rest.framework.v1.exceptions.ValidationIssueUtil.getResourceUri(gw.api.modules.rest.framework.v1.exceptions.ValidationIssueUtil.loadBean(ValidationIssue.EntityValidation.EntityId)).getId()"
+        },
+        "message": {
+          "path": "ValidationIssue.Reason"
+        },
+        "severity": {
+          "path": "ValidationIssue.Type",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "type": {
+          "path": "gw.api.modules.rest.framework.v1.exceptions.ValidationIssueUtil.getResourceUri(gw.api.modules.rest.framework.v1.exceptions.ValidationIssueUtil.loadBean(ValidationIssue.EntityValidation.EntityId)).getType()"
+        },
+        "url": {
+          "path": "gw.api.modules.rest.framework.v1.exceptions.ValidationIssueUtil.getResourceUri(gw.api.modules.rest.framework.v1.exceptions.ValidationIssueUtil.loadBean(ValidationIssue.EntityValidation.EntityId)).getUri()"
+        },
+        "validationLevel": {
+          "path": "ValidationIssue.Level",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "ValidationResult": {
+      "schemaDefinition": "ValidationResult",
+      "root": "gw.api.validation.EntityValidationException",
+      "properties": {
+        "allValidationLevelsReached": {
+          "path": "EntityValidationException.RestV1.AllValidationLevelsReached",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "hasErrors": {
+          "path": "EntityValidationException.hasErrors()"
+        },
+        "validationIssues": {
+          "path": "EntityValidationException.RestV1.Issues",
+          "mapper": "#/mappers/ValidationIssue"
+        },
+        "validationLevelReached": {
+          "path": "EntityValidationException.RestV1.ValidationLevelReached",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "VehicleIncident": {
+      "schemaDefinition": "VehicleIncident",
+      "root": "entity.VehicleIncident",
+      "properties": {
+        "automationPath": {
+          "path": "VehicleIncident.AutomationPath",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "childSafetySeatStatus": {
+          "path": "VehicleIncident.ChildSafetySeatStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "damageDescription": {
+          "path": "VehicleIncident.Description"
+        },
+        "id": {
+          "path": "VehicleIncident.RestId"
+        },
+        "lossParty": {
+          "path": "VehicleIncident.LossParty",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "propertyValue": {
+          "path": "VehicleIncident.PropertyValue",
+          "mapper": "#/mappers/CurrencyAmount"
+        },
+        "severity": {
+          "path": "VehicleIncident.Severity",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "valuationRequired": {
+          "path": "VehicleIncident.ValuationRequired",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "valuationSource": {
+          "path": "VehicleIncident.ValuationSource",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "vehicle": {
+          "path": "VehicleIncident.RestV1.VehicleWrapper",
+          "mapper": "#/mappers/ClaimVehicle"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<plugin
+  interface="DisplayKeyLoaderPlugin"
+  name="TsmDisplayKeyLoaderPlugin">
+  <plugin-java
+    disabled="${tsm.disabled:true}"
+    javaclass="com.guidewire.pl.plugin.displaykeyloader.TsmDisplayKeyLoader">
+    <param
+      name="baseUrl"
+      value="${tsm.baseUrl}"/>
+    <param
+      name="defaultStringGroup"
+      value="${tsm.defaultStringGroup}"/>
+    <param
+      name="stringGroups"
+      value="${tsm.stringGroups:}"/>
+  </plugin-java>
+</plugin>

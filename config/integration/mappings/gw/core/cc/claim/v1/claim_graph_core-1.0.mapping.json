@@ -1,0 +1,164 @@
+{
+  "schemaName": "gw.core.cc.claim.v1.claim_graph_core-1.0",
+  "combine": [
+    "gw.core.cc.claim.v1.claim_combined_core-1.0"
+  ],
+  "mappers": {
+    "Claim": {
+      "schemaDefinition": "Claim",
+      "root": "entity.Claim",
+      "properties": {
+        "activities": {
+          "path": "Claim.RestV1.ActivitiesSorted",
+          "mapper": "#/mappers/Activity"
+        },
+        "assessmentSummaries": {
+          "path": "Claim.RestV1.AssessmentSummariesSorted",
+          "mapper": "#/mappers/AssessmentSummary"
+        },
+        "checkSets": {
+          "path": "Claim.RestV1.CheckSetsSorted",
+          "mapper": "#/mappers/CheckSet"
+        },
+        "checks": {
+          "path": "Claim.RestV1.ChecksSorted",
+          "mapper": "#/mappers/Check"
+        },
+        "contacts": {
+          "path": "Claim.RestV1.ContactsSorted",
+          "mapper": "#/mappers/ClaimContact"
+        },
+        "dwellingIncidents": {
+          "path": "Claim.RestV1.DwellingIncidentsSorted",
+          "mapper": "#/mappers/DwellingIncident"
+        },
+        "exposures": {
+          "path": "Claim.RestV1.ExposuresSorted",
+          "mapper": "#/mappers/Exposure"
+        },
+        "fixedPropertyIncidents": {
+          "path": "Claim.RestV1.FixedPropertyIncidentsSorted",
+          "mapper": "#/mappers/FixedPropertyIncident"
+        },
+        "injuryIncidents": {
+          "path": "Claim.RestV1.InjuryIncidentsSorted",
+          "mapper": "#/mappers/InjuryIncident"
+        },
+        "intakeInteractions": {
+          "path": "Claim.IntakeInteractions",
+          "mapper": "#/mappers/IntakeInteraction"
+        },
+        "internalId": {
+          "path": "Claim.RestV1_TypeIDString"
+        },
+        "livingExpensesIncidents": {
+          "path": "Claim.RestV1.LivingExpensesIncidentsSorted",
+          "mapper": "#/mappers/LivingExpensesIncident"
+        },
+        "notes": {
+          "path": "Claim.RestV1.NotesSorted",
+          "mapper": "#/mappers/Note"
+        },
+        "otherStructureIncidents": {
+          "path": "Claim.RestV1.OtherStructureIncidentsSorted",
+          "mapper": "#/mappers/OtherStructureIncident"
+        },
+        "payments": {
+          "path": "Claim.RestV1.PaymentsSorted",
+          "mapper": "#/mappers/Transaction"
+        },
+        "policy": {
+          "path": "Claim.Policy",
+          "mapper": "#/mappers/Policy"
+        },
+        "propertyContentsIncidents": {
+          "path": "Claim.RestV1.PropertyContentsIncidentsSorted",
+          "mapper": "#/mappers/PropertyContentsIncident"
+        },
+        "recoveries": {
+          "path": "Claim.RestV1.RecoveriesSorted",
+          "mapper": "#/mappers/Transaction"
+        },
+        "recoveryReserveSets": {
+          "path": "Claim.RestV1.RecoveryReserveSetsSorted",
+          "mapper": "#/mappers/RecoveryReserveSet"
+        },
+        "recoveryReserves": {
+          "path": "Claim.RestV1.RecoveryReservesSorted",
+          "mapper": "#/mappers/Transaction"
+        },
+        "recoverySets": {
+          "path": "Claim.RestV1.RecoverySetsSorted",
+          "mapper": "#/mappers/RecoverySet"
+        },
+        "reserveSets": {
+          "path": "Claim.RestV1.ReserveSetsSorted",
+          "mapper": "#/mappers/ReserveSet"
+        },
+        "reserves": {
+          "path": "Claim.RestV1.ReservesSorted",
+          "mapper": "#/mappers/Transaction"
+        },
+        "serviceRequests": {
+          "path": "Claim.RestV1.ServiceRequestsSorted",
+          "mapper": "#/mappers/ServiceRequest"
+        },
+        "vehicleIncidents": {
+          "path": "Claim.RestV1.VehicleIncidentsSorted",
+          "mapper": "#/mappers/VehicleIncident"
+        }
+      }
+    },
+    "Exposure": {
+      "schemaDefinition": "Exposure",
+      "root": "entity.Exposure",
+      "properties": {
+        "internalId": {
+          "path": "Exposure.RestV1_TypeIDString"
+        }
+      }
+    },
+    "Policy": {
+      "schemaDefinition": "Policy",
+      "root": "entity.Policy",
+      "properties": {
+        "coverages": {
+          "path": "Policy.RestV1.CoveragesSorted",
+          "mapper": "#/mappers/Coverage"
+        },
+        "endorsements": {
+          "path": "Policy.RestV1.EndorsementsSorted",
+          "mapper": "#/mappers/Endorsement"
+        },
+        "locationBasedRiskUnits": {
+          "path": "Policy.RestV1.LocationBasedRiskUnitsSorted",
+          "mapper": "#/mappers/LocationBasedRiskUnit"
+        },
+        "vehicleRiskUnits": {
+          "path": "Policy.RestV1.VehicleRiskUnitsSorted",
+          "mapper": "#/mappers/VehicleRiskUnit"
+        }
+      }
+    },
+    "PropertyContentsIncident": {
+      "schemaDefinition": "PropertyContentsIncident",
+      "root": "entity.PropertyContentsIncident",
+      "properties": {
+        "assessmentContentItems": {
+          "path": "PropertyContentsIncident.OrderedContentItemLine",
+          "mapper": "#/mappers/AssessmentContentItem"
+        }
+      }
+    },
+    "ServiceRequest": {
+      "schemaDefinition": "ServiceRequest",
+      "root": "entity.ServiceRequest",
+      "properties": {
+        "invoices": {
+          "path": "ServiceRequest.RestV1.InvoicesSorted",
+          "mapper": "#/mappers/ServiceRequestStatement"
+        }
+      }
+    }
+  }
+}

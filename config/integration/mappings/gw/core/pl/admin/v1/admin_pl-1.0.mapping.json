@@ -1,0 +1,209 @@
+{
+  "schemaName": "gw.core.pl.admin.v1.admin_pl-1.0",
+  "combine": [
+    "gw.core.pl.framework.v1.framework_pl-1.0",
+    "gw.core.pl.common.v1.common_pl-1.0"
+  ],
+  "mappers": {
+    "Group": {
+      "schemaDefinition": "Group",
+      "root": "entity.Group",
+      "properties": {
+        "displayName": {
+          "path": "Group.RestV1_SafeDisplayName"
+        },
+        "groupType": {
+          "path": "Group.GroupType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "id": {
+          "path": "Group.RestId"
+        },
+        "name": {
+          "path": "Group.Name"
+        },
+        "parent": {
+          "path": "Group.Parent.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        },
+        "securityZone": {
+          "path": "Group.SecurityZone",
+          "mapper": "#/mappers/SimpleReference"
+        },
+        "supervisor": {
+          "path": "Group.Supervisor.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        }
+      }
+    },
+    "GroupUser": {
+      "schemaDefinition": "GroupUser",
+      "root": "entity.GroupUser",
+      "properties": {
+        "id": {
+          "path": "GroupUser.RestId"
+        },
+        "loadFactor": {
+          "path": "GroupUser.LoadFactor"
+        },
+        "loadFactorType": {
+          "path": "GroupUser.LoadFactorType",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "manager": {
+          "path": "GroupUser.Manager"
+        },
+        "member": {
+          "path": "GroupUser.Member"
+        },
+        "user": {
+          "path": "GroupUser.User.RestV1_AsReference",
+          "mapper": "#/mappers/ResourceReference"
+        }
+      }
+    },
+    "Organization": {
+      "schemaDefinition": "Organization",
+      "root": "entity.Organization",
+      "properties": {
+        "carrier": {
+          "path": "Organization.Carrier"
+        },
+        "contact": {
+          "path": "Organization.Contact",
+          "mapper": "#/mappers/Contact"
+        },
+        "displayName": {
+          "path": "Organization.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "Organization.RestId"
+        },
+        "masterAdmin": {
+          "path": "Organization.MasterAdmin"
+        },
+        "name": {
+          "path": "Organization.Name"
+        },
+        "rootGroup": {
+          "path": "Organization.RootGroup",
+          "mapper": "#/mappers/SimpleReference"
+        },
+        "type": {
+          "path": "Organization.Type",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "Role": {
+      "schemaDefinition": "Role",
+      "root": "entity.Role",
+      "properties": {
+        "carrierInternal": {
+          "path": "Role.CarrierInternalRole"
+        },
+        "description": {
+          "path": "Role.Description"
+        },
+        "displayName": {
+          "path": "Role.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "Role.RestId"
+        },
+        "name": {
+          "path": "Role.Name"
+        },
+        "roleType": {
+          "path": "Role.RoleType",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "RolePermission": {
+      "schemaDefinition": "RolePermission",
+      "root": "entity.RolePrivilege",
+      "properties": {
+        "id": {
+          "path": "RolePrivilege.RestId"
+        },
+        "permission": {
+          "path": "RolePrivilege.Permission",
+          "mapper": "#/mappers/TypeKeyReference"
+        }
+      }
+    },
+    "User": {
+      "schemaDefinition": "User",
+      "root": "entity.User",
+      "properties": {
+        "active": {
+          "path": "User.Credential.Active"
+        },
+        "cellPhone": {
+          "path": "User.Contact.RestV1_getPhoneNumber(Person#CellPhone)",
+          "mapper": "#/mappers/PhoneNumber"
+        },
+        "displayName": {
+          "path": "User.RestV1_SafeDisplayName"
+        },
+        "employeeNumber": {
+          "path": "User.Contact.EmployeeNumber"
+        },
+        "externalUser": {
+          "path": "User.ExternalUser"
+        },
+        "firstName": {
+          "path": "User.Contact.FirstName"
+        },
+        "homePhone": {
+          "path": "User.Contact.RestV1_getPhoneNumber(Contact#HomePhone)",
+          "mapper": "#/mappers/PhoneNumber"
+        },
+        "id": {
+          "path": "User.RestId"
+        },
+        "lastName": {
+          "path": "User.Contact.LastName"
+        },
+        "roles": {
+          "path": "User.RestV1_SortedUserRoles",
+          "mapper": "#/mappers/UserRoleReference"
+        },
+        "suffix": {
+          "path": "User.Contact.Suffix",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "username": {
+          "path": "User.Credential.UserName"
+        },
+        "vacationStatus": {
+          "path": "User.VacationStatus",
+          "mapper": "#/mappers/TypeKeyReference"
+        },
+        "workPhone": {
+          "path": "User.Contact.RestV1_getPhoneNumber(Contact#WorkPhone)",
+          "mapper": "#/mappers/PhoneNumber"
+        }
+      }
+    },
+    "UserRoleReference": {
+      "schemaDefinition": "UserRoleReference",
+      "root": "entity.UserRole",
+      "properties": {
+        "displayName": {
+          "path": "UserRole.Role.RestV1_SafeDisplayName"
+        },
+        "id": {
+          "path": "UserRole.Role.RestId"
+        },
+        "type": {
+          "path": "(typeof UserRole.Role).RelativeName"
+        },
+        "uri": {
+          "path": "UserRole.Role.RestV1_AsReference.Uri"
+        }
+      }
+    }
+  }
+}

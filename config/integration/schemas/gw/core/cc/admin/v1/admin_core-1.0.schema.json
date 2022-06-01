@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "x-gw-combine": [
+    "gw.core.cc.common.v1.common_core-1.0",
+    "gw.core.pl.admin.v1.admin_pl-1.0"
+  ],
+  "definitions": {
+    "AuthorityLimit": {
+      "title": "Authority limit",
+      "description": "An authority limit that is attached to an authority limit profile",
+      "type": "object",
+      "x-gw-sinceVersion": "1.4.0",
+      "properties": {
+        "costType": {
+          "title": "CostType",
+          "description": "The cost type that this limit applies to. If set to null, the limit applies to all cost types.",
+          "$ref": "#/definitions/TypeKeyReference",
+          "x-gw-nullable": true,
+          "x-gw-extensions": {
+            "filterable": true,
+            "sortable": true,
+            "typelist": "CostType"
+          }
+        },
+        "coverageType": {
+          "title": "CoverageType",
+          "description": "The coverage type that this limit applies to. If set to null, the limit applies to all coverage types.",
+          "$ref": "#/definitions/TypeKeyReference",
+          "x-gw-nullable": true,
+          "x-gw-extensions": {
+            "filterable": true,
+            "sortable": true,
+            "typelist": "CoverageType"
+          }
+        },
+        "id": {
+          "title": "ID",
+          "description": "The unique identifier of this authority limit",
+          "type": "string",
+          "readOnly": true
+        },
+        "limitAmount": {
+          "title": "LimitAmount",
+          "description": "The monetary amount limit defined on the authority limit",
+          "$ref": "#/definitions/MonetaryAmount",
+          "x-gw-extensions": {
+            "requiredForCreate": true
+          }
+        },
+        "limitType": {
+          "title": "LimitType",
+          "description": "The limit type on the authority limit",
+          "$ref": "#/definitions/TypeKeyReference",
+          "x-gw-extensions": {
+            "filterable": true,
+            "requiredForCreate": true,
+            "sortable": true,
+            "typelist": "AuthorityLimitType"
+          }
+        },
+        "policyType": {
+          "title": "PolicyType",
+          "description": "The policy type that this limit applies to. If set to null, the limit applies to all policy types.",
+          "$ref": "#/definitions/TypeKeyReference",
+          "x-gw-nullable": true,
+          "x-gw-extensions": {
+            "filterable": true,
+            "sortable": true,
+            "typelist": "PolicyType"
+          }
+        }
+      }
+    },
+    "AuthorityLimitProfile": {
+      "title": "Authority limit profile",
+      "description": "An authority limit profile is a collection of authority limits that determine the type of transactions a user can create and whether those new transactions require approval",
+      "type": "object",
+      "x-gw-sinceVersion": "1.4.0",
+      "properties": {
+        "currency": {
+          "title": "Currency",
+          "description": "The currency in which the authority limit profile's limits are defined",
+          "$ref": "#/definitions/TypeKeyReference",
+          "x-gw-extensions": {
+            "requiredForCreate": true,
+            "typelist": "Currency"
+          }
+        },
+        "custom": {
+          "title": "Custom",
+          "description": "A `true` value indicates that this is a custom profile used by a single user",
+          "type": "boolean",
+          "x-gw-extensions": {
+            "createOnly": true,
+            "filterable": true
+          }
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this authority limit profile",
+          "type": "string",
+          "x-gw-nullable": true
+        },
+        "displayName": {
+          "title": "Display name",
+          "description": "The formatted name of this authority limit profile",
+          "type": "string",
+          "readOnly": true
+        },
+        "id": {
+          "title": "ID",
+          "description": "The unique identifier of this authority limit profile",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "description": "The name of this authority limit profile",
+          "type": "string",
+          "x-gw-extensions": {
+            "filterable": true,
+            "sortable": true
+          }
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "authorityLimitProfile": {
+          "title": "AuthorityLimitProfile",
+          "description": "The authority limit profile associated to this user",
+          "$ref": "#/definitions/SimpleReference",
+          "x-gw-nullable": true,
+          "x-gw-sinceVersion": "1.4.0",
+          "x-gw-extensions": {
+            "resourceType": "AuthorityLimitProfile",
+            "securityLevel": "special"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,569 @@
+resources:
+  Activities:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Activity:
+    permissions:
+      view: false
+      edit: false
+      approve: false
+      assign: false
+      complete: false
+      skip: false
+  ActivityAssignees:
+    permissions:
+      view: false
+  ActivityNotes:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ActivityPattern:
+    permissions:
+      view: false
+  AdminOpenApiSchema:
+    permissions:
+      view: true
+  AssessmentContentItem:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  AssessmentContentItems:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  AssessmentSummaries:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  AssessmentSummary:
+    permissions:
+      view: false
+  Assignee:
+    permissions:
+      view: false
+  AuthorityLimit:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  AuthorityLimitProfile:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  AuthorityLimitProfiles:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  AuthorityLimits:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Check:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+      acknowledge-submission: false
+      mark-cleared: false
+      mark-issued: false
+      mark-stopped: false
+      mark-voided: false
+      request-stop: false
+      request-void: false
+  CheckSet:
+    permissions:
+      view: false
+  CheckSets:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Checks:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Claim:
+    permissions:
+      view: "user.isMatchingServiceRequestSpecialist(resource)"
+      edit: false
+      assign: false
+      cancel: false
+      close: false
+      submit: false
+      validate: false
+  ClaimActivities:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimActivityAssignees:
+    permissions:
+      view: false
+  ClaimActivityPatterns:
+    permissions:
+      view: false
+  ClaimApiOpenApiSchema:
+    permissions:
+      view: true
+  ClaimContact:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  ClaimContactRoleOwners:
+    permissions:
+      view: false
+  ClaimContacts:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimDocument:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  ClaimDocumentContent:
+    permissions:
+      view: false
+  ClaimDocuments:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimDwellingIncidents:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimExposures:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimFixedPropertyIncidents:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimGraphSchema:
+    permissions:
+      view: true
+  ClaimInfo:
+    permissions:
+      view: false
+      edit: false
+      retrieve: false
+  ClaimInfos:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimInjuryIncidents:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimIntakeInteractions:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimLivingExpensesIncidents:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimNotes:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimOtherStructureIncidents:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimPropertyContentsIncidents:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimRelatedObjects:
+    permissions:
+      view: false
+  ClaimSearch:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ClaimSearchResult:
+    permissions:
+      view: false
+  ClaimSearchResultWrapper:
+    permissions:
+      view: false
+  ClaimSearchV2:
+    permissions:
+      view: false
+  ClaimServiceRequests:
+    permissions:
+      view: __inherit
+      create: false
+    filter: gw.rest.core.cc.shared.v1.RestrictServiceRequestsForSpecialistFilter
+  ClaimSolrSearch:
+    permissions:
+      view: false
+  ClaimSolrSearchResult:
+    permissions:
+      view: false
+  ClaimVehicleIncidents:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Claims:
+    permissions:
+      view: true
+      create: false
+    filter: gw.rest.core.cc.shared.v1.RestrictClaimsForSpecialistFilter
+  CommonOpenApiSchema:
+    permissions:
+      view: true
+  ContactRoleConstraint:
+    permissions:
+      view: false
+  ContactRoleConstraints:
+    permissions:
+      view: false
+  Document:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  DocumentContent:
+    permissions:
+      view: false
+  DwellingIncident:
+    permissions:
+      view: false
+      edit: false
+  Endorsement:
+    permissions:
+      view: false
+  Exposure:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+      assign: false
+      close: false
+      validate: false
+  FixedPropertyIncident:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  GenericRelation:
+    permissions:
+      view: false
+  Group:
+    permissions:
+      view: false
+  GroupUser:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  GroupUsers:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Groups:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  InjuryIncident:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  IntakeInteraction:
+    permissions:
+      view: false
+      edit: false
+  LivingExpensesIncident:
+    permissions:
+      view: false
+      edit: false
+  LocationBasedRiskUnit:
+    permissions:
+      view: false
+  LocationBasedRiskUnitCoverage:
+    permissions:
+      view: false
+  LocationBasedRiskUnitCoverages:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  LocationBasedRiskUnits:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Note:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  OtherStructureIncident:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  Payment:
+    permissions:
+      view: false
+      edit: false
+      acknowledge-submission: false
+  Payments:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Policy:
+    permissions:
+      view: false
+  PolicyCoverage:
+    permissions:
+      view: false
+  PolicyCoverages:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  PolicyEndorsements:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  PolicyLocation:
+    permissions:
+      view: false
+  PolicyLocations:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  PropertyContentsIncident:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  Recoveries:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Recovery:
+    permissions:
+      view: false
+      edit: false
+      acknowledge-submission: false
+  RecoveryReserve:
+    permissions:
+      view: false
+      edit: false
+      acknowledge-submission: false
+  RecoveryReserveSet:
+    permissions:
+      view: false
+  RecoveryReserveSets:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  RecoveryReserves:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  RecoverySet:
+    permissions:
+      view: false
+  RecoverySets:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Reserve:
+    permissions:
+      view: false
+      edit: false
+      acknowledge-submission: false
+  ReserveSet:
+    permissions:
+      view: false
+  ReserveSets:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Reserves:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Role:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  RolePermission:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  RolePermissions:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  Roles:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  ServiceRequest:
+    permissions:
+      view:
+      - __inherit
+      - "user.isMatchingServiceRequestSpecialist(resource)"
+      - "resource.ServiceRequest.Progress != ServiceRequestProgress.TC_DRAFT"
+      edit: "user.isMatchingServiceRequestSpecialist(resource)"
+      accept: "user.isMatchingServiceRequestSpecialist(resource)"
+      add-quote: "user.isMatchingServiceRequestSpecialist(resource)"
+      approve-quote: false
+      assign: false
+      cancel: "user.isMatchingServiceRequestSpecialist(resource)"
+      complete-work: "user.isMatchingServiceRequestSpecialist(resource)"
+      decline: "user.isMatchingServiceRequestSpecialist(resource)"
+      internal-cancel: false
+      submit: false
+  ServiceRequestInvoice:
+    permissions:
+      view: __inherit
+      edit: __inherit
+      approve: __inherit
+      mark-as-paid: __inherit
+      withdraw: __inherit
+  ServiceRequestInvoices:
+    permissions:
+      view: __inherit
+      create: __inherit
+    filter: __nofilter
+  ServiceRequests:
+    permissions:
+      view: true
+    filter: gw.rest.core.cc.shared.v1.RestrictServiceRequestsForSpecialistFilter
+  TypeList:
+    permissions:
+      view: true
+  TypeLists:
+    permissions:
+      view: true
+  UnverifiedLocationBasedRiskUnit:
+    permissions:
+      view: false
+      edit: false
+  UnverifiedLocationBasedRiskUnitCoverage:
+    permissions:
+      view: false
+      edit: false
+  UnverifiedLocationBasedRiskUnitCoverages:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  UnverifiedLocationBasedRiskUnits:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  UnverifiedPolicies:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  UnverifiedPolicy:
+    permissions:
+      view: false
+      edit: false
+  UnverifiedPolicyContacts:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  UnverifiedPolicyCoverage:
+    permissions:
+      view: false
+      edit: false
+  UnverifiedPolicyCoverages:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  UnverifiedPolicyLocation:
+    permissions:
+      view: false
+      edit: false
+  UnverifiedPolicyLocations:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  UnverifiedVehicleRiskUnit:
+    permissions:
+      view: false
+      edit: false
+  UnverifiedVehicleRiskUnitCoverage:
+    permissions:
+      view: false
+      edit: false
+  UnverifiedVehicleRiskUnitCoverages:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  UnverifiedVehicleRiskUnits:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  User:
+    permissions:
+      view: false
+      edit: false
+  Users:
+    permissions:
+      view: false
+      create: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  VehicleIncident:
+    permissions:
+      view: false
+      edit: false
+      delete: false
+  VehicleRiskUnit:
+    permissions:
+      view: false
+  VehicleRiskUnitCoverage:
+    permissions:
+      view: false
+  VehicleRiskUnitCoverages:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
+  VehicleRiskUnits:
+    permissions:
+      view: false
+    filter: gw.rest.core.cc.security.NoPermissionsQueryFilter
